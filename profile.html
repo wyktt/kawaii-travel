@@ -57,12 +57,12 @@
       <div class="profile-layout">
         <div class="profile-sidebar scroll-animate">
           <div class="profile-cover"></div>
-          <div class="profile-avatar">🧸</div>
-          <div class="profile-name">旅行小萌</div>
-          <div class="profile-bio">热爱旅行的90后，走过20+个国家 🌍</div>
+          <div class="profile-avatar" id="pProfileAvatar">🧸</div>
+          <div class="profile-name" id="pProfileName">旅行小萌</div>
+          <div class="profile-bio" id="pProfileBio">这位用户还没有写简介~</div>
           <div class="profile-stats">
-            <div><div class="num">12</div><div class="label">旅行</div></div>
-            <div><div class="num">8</div><div class="label">收藏</div></div>
+            <div><div class="num" id="pStatsTrips">0</div><div class="label">旅行</div></div>
+            <div><div class="num" id="pStatsFavs">0</div><div class="label">收藏</div></div>
             <div><div class="num">5</div><div class="label">游记</div></div>
           </div>
           <nav class="sidebar-nav">
@@ -70,7 +70,7 @@
             <a href="my-orders.html">📋 我的订单</a>
             <a href="favorites.html">💖 我的收藏</a>
             <a href="settings.html">⚙️ 账户设置</a>
-            <a href="index.html">🚪 退出登录</a>
+            <a href="#" onclick="Auth.logout(); window.location.href='index.html'; return false;">🚪 退出登录</a>
           </nav>
         </div>
 
@@ -113,6 +113,65 @@
   <div class="back-to-top">↑</div>
   <script src="js/utils.js"></script>
   <script src="js/auth.js"></script><script src="js/main.js"></script><script src="js/cart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var user = Auth.getCurrentUser();
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      // Populate profile sidebar
+      document.getElementById('pProfileName').textContent = user.username || '萌趣用户';
+      document.getElementById('pProfileAvatar').textContent = user.avatar || '🧸';
+      if (user.bio) {
+        document.getElementById('pProfileBio').textContent = user.bio;
+      }
+
+      // Favorites count
+      var favs = getStorage('kawaii_favorites', []);
+      document.getElementById('pStatsFavs').textContent = favs.length || 0;
+
+      // Orders
+      var orders = getStorage('kawaii_orders', []);
+      document.getElementById('pStatsTrips').textContent = orders.length || 0;
+
+      // Render recent orders
+      var ordersEl = document.getElementById('pOrdersList');
+      if (orders.length > 0) {
+        var html = '';
+        orders.slice(-3).reverse().forEach(function(o) {
+          var statusClass = o.status === 'confirmed' ? 'status-confirmed' : 'status-pending';
+          var statusText = o.status === 'confirmed' ? '已确认' : '待支付';
+          html += '<div class="order-row"><div><strong>' + (o.item || o.name || '订单') + '</strong>';
+          html += '<div style="font-size:0.8rem;color:var(--text-light);">' + (o.date || '') + (o.qty ? ' · ' + o.qty + '人' : '') + '</div></div>';
+          html += '<span class="order-status ' + statusClass + '">' + statusText + '</span></div>';
+        });
+        ordersEl.innerHTML = html;
+      }
+
+      // Render favorites
+      var favsGrid = document.getElementById('pFavsGrid');
+      var destMap = {
+        'tokyo': { flag: '🇯🇵', name: '东京', price: '¥5,999起', href: 'destination-tokyo.html' },
+        'paris': { flag: '🇫🇷', name: '巴黎', price: '¥12,999起', href: 'destination-paris.html' },
+        'phuket': { flag: '🇹🇭', name: '普吉岛', price: '¥3,999起', href: 'destination-phuket.html' }
+      };
+      if (favs.length > 0) {
+        var fh = '';
+        favs.forEach(function(fid) {
+          var d = destMap[fid];
+          if (d) {
+            fh += '<a href="' + d.href + '" style="background:var(--white);border-radius:var(--radius-md);padding:16px;box-shadow:var(--shadow-sm);text-align:center;transition:var(--transition);display:block;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">';
+            fh += '<div style="font-size:2rem;margin-bottom:8px;">' + d.flag + '</div>';
+            fh += '<div style="font-size:0.9rem;font-weight:600;">' + d.name + '</div>';
+            fh += '<div style="font-size:0.8rem;color:var(--text-light);">' + d.price + '</div></a>';
+          }
+        });
+        if (fh) favsGrid.innerHTML = fh;
+      }
+    });
+  </script>
 </body>
 </html>
 
