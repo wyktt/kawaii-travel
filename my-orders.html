@@ -56,14 +56,14 @@
       <div class="profile-layout">
         <div class="profile-sidebar scroll-animate">
           <div class="profile-cover"></div>
-          <div class="profile-avatar">🧸</div>
-          <div class="profile-name">旅行小萌</div>
+          <div class="profile-avatar" id="sideAvatar">🧸</div>
+          <div class="profile-name" id="sideName">萌趣用户</div>
           <nav class="sidebar-nav">
             <a href="profile.html">📊 个人中心</a>
             <a href="my-orders.html" class="active">📋 我的订单</a>
             <a href="favorites.html">💖 我的收藏</a>
             <a href="settings.html">⚙️ 账户设置</a>
-            <a href="index.html">🚪 退出登录</a>
+            <a href="#" onclick="Auth.logout(); window.location.href='index.html'; return false;">🚪 退出登录</a>
           </nav>
         </div>
 
@@ -155,7 +155,13 @@
         container.appendChild(card);
       });
     }
-    document.addEventListener('DOMContentLoaded', renderOrders);
+    document.addEventListener('DOMContentLoaded', function() {
+      var user = Auth.getCurrentUser();
+      if (!user) { window.location.href = 'login.html'; return; }
+      document.getElementById('sideName').textContent = user.username || '萌趣用户';
+      document.getElementById('sideAvatar').textContent = user.avatar || '🧸';
+      renderOrders();
+    });
   </script>
 </body>
 </html>
