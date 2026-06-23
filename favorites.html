@@ -71,43 +71,19 @@
           <h2 style="font-size:1.4rem;margin-bottom:16px;" class="scroll-animate">💖 我的收藏</h2>
 
           <div class="fav-tabs scroll-animate">
-            <div class="fav-tab active">目的地 (6)</div>
-            <div class="fav-tab">酒店 (3)</div>
-            <div class="fav-tab">攻略 (2)</div>
+            <div class="fav-tab active" id="favCount">收藏 (0)</div>
+            
+            
           </div>
 
-          <div class="fav-grid">
-            <div class="fav-card scroll-animate delay-1">
-              <div class="fav-img"><div class="img-placeholder" style="background:linear-gradient(135deg,#FFB6C1,#FF8FA3);"></div></div>
-              <div class="remove-btn" onclick="this.closest('.fav-card').style.display='none';showToast('已取消收藏')">✕</div>
-              <div class="fav-body"><h3>🇯🇵 日本东京</h3><p>5天4晚 · 樱花季</p><div class="fav-price">¥5,999 <span>/人起</span></div></div>
-            </div>
-            <div class="fav-card scroll-animate delay-2">
-              <div class="fav-img"><div class="img-placeholder" style="background:linear-gradient(135deg,#87CEEB,#6BC4A6);"></div></div>
-              <div class="remove-btn" onclick="this.closest('.fav-card').style.display='none';showToast('已取消收藏')">✕</div>
-              <div class="fav-body"><h3>🇫🇷 法国巴黎</h3><p>7天6晚 · 浪漫之都</p><div class="fav-price">¥12,999 <span>/人起</span></div></div>
-            </div>
-            <div class="fav-card scroll-animate delay-3">
-              <div class="fav-img"><div class="img-placeholder" style="background:linear-gradient(135deg,#FFF5BA,#FFA07A);"></div></div>
-              <div class="remove-btn" onclick="this.closest('.fav-card').style.display='none';showToast('已取消收藏')">✕</div>
-              <div class="fav-body"><h3>🇹🇭 泰国普吉岛</h3><p>5天4晚 · 海岛天堂</p><div class="fav-price">¥3,999 <span>/人起</span></div></div>
-            </div>
-            <div class="fav-card scroll-animate delay-1">
-              <div class="fav-img"><div class="img-placeholder" style="background:linear-gradient(135deg,#D8BFD8,#DDA0DD);"></div></div>
-              <div class="remove-btn" onclick="this.closest('.fav-card').style.display='none';showToast('已取消收藏')">✕</div>
-              <div class="fav-body"><h3>🇯🇵 日本京都</h3><p>4天3晚 · 古都风情</p><div class="fav-price">¥5,499 <span>/人起</span></div></div>
-            </div>
-            <div class="fav-card scroll-animate delay-2">
-              <div class="fav-img"><div class="img-placeholder" style="background:linear-gradient(135deg,#B0E0E6,#ADD8E6);"></div></div>
-              <div class="remove-btn" onclick="this.closest('.fav-card').style.display='none';showToast('已取消收藏')">✕</div>
-              <div class="fav-body"><h3>🇬🇧 英国伦敦</h3><p>6天5晚 · 经典英伦</p><div class="fav-price">¥11,999 <span>/人起</span></div></div>
-            </div>
-            <div class="fav-card scroll-animate delay-3">
-              <div class="fav-img"><div class="img-placeholder" style="background:linear-gradient(135deg,#90EE90,#3CB371);"></div></div>
-              <div class="remove-btn" onclick="this.closest('.fav-card').style.display='none';showToast('已取消收藏')">✕</div>
-              <div class="fav-body"><h3>🇲🇻 马尔代夫</h3><p>5天4晚 · 水上天堂</p><div class="fav-price">¥8,999 <span>/人起</span></div></div>
-            </div>
+          <div class="fav-grid" id="favGrid">
+          <div class="empty-state" id="emptyFav" style="display:none; grid-column:1/-1;">
+            <div class="emoji">💔</div>
+            <h3>还没有收藏内容</h3>
+            <p>去目的地】酒店】攻略页面点击心形按钮收藏吧~</p>
+            <a href="destinations.html" class="btn btn-primary">去探索</a>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -123,6 +99,46 @@
     <div class="footer-bottom"><p>&copy; 2024 萌趣旅行 Kawaii Travel. All rights reserved. 💖</p></div>
   </footer>
   <div class="back-to-top">↑</div>
-  <script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/cart.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script><script src="js/main.js"></script><script src="js/cart.js"></script>
+
+  <script>
+    var FAV_DATA = {
+      'tokyo': { name: '🇯🇵 日本东京', desc: '5天4晚 · 樱花季', price: '¥5,999', gradient: 'linear-gradient(135deg,#FFB6C1,#FF8FA3)', href: 'destination-tokyo.html' },
+      'paris': { name: '🇫🇷 法国巴黎', desc: '7天6晚 · 浪漫之都', price: '¥12,999', gradient: 'linear-gradient(135deg,#87CEEB,#6BC4A6)', href: 'destination-paris.html' },
+      'phuket': { name: '🇹🇭 泰国普吉岛', desc: '5天4晚 · 海岛天堂', price: '¥3,999', gradient: 'linear-gradient(135deg,#FFF5BA,#FFA07A)', href: 'destination-phuket.html' },
+      'hotel_sakura': { name: '🌸 樱花和风旅馆', desc: '东京浅草 · 五星级', price: '¥896/晚', gradient: 'linear-gradient(135deg,#FFB6C1,#FF8FA3)', href: 'hotel-detail.html' }
+    };
+    function renderFavorites() {
+      var favs = getStorage('kawaii_favorites', []);
+      var grid = document.getElementById('favGrid');
+      var empty = document.getElementById('emptyFav');
+      var cnt = document.getElementById('favCount');
+      if (cnt) cnt.textContent = '收藏 (' + favs.length + ')';
+      grid.innerHTML = '';
+      if (favs.length === 0) {
+        grid.appendChild(empty);
+        empty.style.display = 'block';
+        return;
+      }
+      favs.forEach(function(id) {
+        var d = FAV_DATA[id];
+        if (!d) return;
+        var card = document.createElement('div');
+        card.className = 'fav-card scroll-animate visible';
+        card.innerHTML = '<div class="fav-img"><div class="img-placeholder" style="background:' + d.gradient + ';"></div></div>' +
+          '<div class="remove-btn" onclick="removeFav(\'' + id + '\')">✕</div>' +
+          '<div class="fav-body"><h3>' + d.name + '</h3><p>' + d.desc + '</p><div class="fav-price">' + d.price + ' <span>/人起</span></div>' +
+          '<a href="' + d.href + '" class="btn btn-secondary btn-small" style="margin-top:8px;">查看详情</a></div>';
+        grid.appendChild(card);
+      });
+    }
+    function removeFav(id) {
+      Favorites.toggle(id);
+      renderFavorites();
+    }
+    document.addEventListener('DOMContentLoaded', renderFavorites);
+  </script>
 </body>
 </html>
+

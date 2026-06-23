@@ -181,7 +181,67 @@
   </footer>
   <div class="back-to-top">↑</div>
   <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
   <script src="js/main.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/carousel.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var searchInput = document.querySelector('.filter-bar input');
+      var tags = document.querySelectorAll('.filter-bar .tag');
+      var cards = document.querySelectorAll('.dest-card');
+      var countEl = document.querySelector('.sort-bar .count strong');
+      var sortBtns = document.querySelectorAll('.sort-btn');
+
+      // 搜索筛选
+      if (searchInput) {
+        searchInput.addEventListener('input', debounce(function() {
+          filterCards();
+        }, 300));
+      }
+
+      // 标签筛选
+      tags.forEach(function(tag) {
+        tag.addEventListener('click', function() {
+          tags.forEach(function(t) { t.classList.remove('active'); });
+          tag.classList.add('active');
+          filterCards();
+        });
+      });
+
+      // 排序
+      sortBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          sortBtns.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+        });
+      });
+
+      function filterCards() {
+        var keyword = searchInput ? searchInput.value.toLowerCase() : '';
+        var activeTag = document.querySelector('.filter-bar .tag.active');
+        var category = activeTag ? activeTag.textContent.trim() : '全部';
+        var visibleCount = 0;
+        cards.forEach(function(card) {
+          var text = card.textContent.toLowerCase();
+          var matchKeyword = !keyword || text.indexOf(keyword) > -1;
+          var matchCategory = category === '全部' || text.indexOf(category) > -1 || 
+            (category === '亚洲' && (text.indexOf('日本') > -1 || text.indexOf('泰国') > -1 || text.indexOf('马尔代夫') > -1)) ||
+            (category === '欧洲' && (text.indexOf('法国') > -1 || text.indexOf('英国') > -1)) ||
+            (category === '大洋洲' && text.indexOf('大洋洲') > -1) ||
+            (category === '美洲' && text.indexOf('美洲') > -1);
+          if (matchKeyword && matchCategory) {
+            card.style.display = '';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        if (countEl) countEl.textContent = visibleCount;
+      }
+    });
+  </script>
 </body>
 </html>
+
+

@@ -130,6 +130,33 @@
     <div class="footer-bottom"><p>&copy; 2024 萌趣旅行 Kawaii Travel. All rights reserved. 💖</p></div>
   </footer>
   <div class="back-to-top">↑</div>
-  <script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/cart.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script><script src="js/main.js"></script><script src="js/cart.js"></script>
+
+  <script>
+    var STATUS_MAP = {
+      'pending': { label: '待支付', cls: 'status-pending' },
+      'confirmed': { label: '已确认', cls: 'status-confirmed' },
+      'completed': { label: '已完成', cls: 'status-completed' },
+      'cancelled': { label: '已取消', cls: 'status-cancelled' }
+    };
+    function renderOrders() {
+      var orders = getStorage('kawaii_orders', []);
+      var container = document.querySelector('.profile-main');
+      container.querySelectorAll('.order-card.dynamic').forEach(function(el) { el.remove(); });
+      orders.forEach(function(order) {
+        var st = STATUS_MAP[order.status] || STATUS_MAP['pending'];
+        var card = document.createElement('div');
+        card.className = 'order-card scroll-animate dynamic';
+        card.innerHTML = '<div class="order-card-header"><span>订单号：' + order.id + '</span><span>' + order.date + ' 下单</span></div>' +
+          '<div class="order-card-body"><div class="order-info"><h3>' + order.item + '</h3><p>待确认 · ' + order.qty + '人</p></div>' +
+          '<div class="order-price"><div class="price">¥' + order.price + '</div><div class="status"><span class="order-status ' + st.cls + '">' + st.label + '</span></div></div></div>' +
+          '<div class="order-actions"><button class="btn btn-secondary btn-small" onclick="this.closest(\'.order-card\').remove();showToast(\'已取消\')">取消订单</button></div>';
+        container.appendChild(card);
+      });
+    }
+    document.addEventListener('DOMContentLoaded', renderOrders);
+  </script>
 </body>
 </html>
+

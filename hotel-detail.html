@@ -99,17 +99,17 @@
               <div class="room-card">
                 <div class="room-thumb" style="background:linear-gradient(135deg,#FFB6C1,#FFE4E1);"></div>
                 <div class="room-info"><h4>标准榻榻米房</h4><p>20㎡ · 和室 · 花园景观 · 2人</p></div>
-                <div class="room-price"><span class="price">¥896</span><span class="unit">/晚起</span><button class="btn btn-primary btn-small" onclick="showToast('已选择该房型')">预订</button></div>
+                <div class="room-price"><span class="price">¥896</span><span class="unit">/晚起</span><button class="btn btn-primary btn-small" data-id="room1" data-name="樱花和风旅馆 和式标准间" data-price="896" onclick="addToOrder(this.dataset.id, this.dataset.name, parseInt(this.dataset.price))">预订</button></div>
               </div>
               <div class="room-card">
                 <div class="room-thumb" style="background:linear-gradient(135deg,#DDA0DD,#E6E6FA);"></div>
                 <div class="room-info"><h4>豪华榻榻米套房</h4><p>35㎡ · 和室 · 温泉景观 · 3人</p></div>
-                <div class="room-price"><span class="price">¥1,280</span><span class="unit">/晚起</span><button class="btn btn-primary btn-small" onclick="showToast('已选择该房型')">预订</button></div>
+                <div class="room-price"><span class="price">¥1,280</span><span class="unit">/晚起</span><button class="btn btn-primary btn-small" data-id="room2" data-name="樱花和风旅馆 豪华槄米米套房" data-price="1280" onclick="addToOrder(this.dataset.id, this.dataset.name, parseInt(this.dataset.price))">预订</button></div>
               </div>
               <div class="room-card">
                 <div class="room-thumb" style="background:linear-gradient(135deg,#FFF5BA,#FFD700);"></div>
                 <div class="room-info"><h4>樱花主题家庭房</h4><p>45㎡ · 和洋室 · 露台 · 4人</p></div>
-                <div class="room-price"><span class="price">¥1,680</span><span class="unit">/晚起</span><button class="btn btn-primary btn-small" onclick="showToast('已选择该房型')">预订</button></div>
+                <div class="room-price"><span class="price">¥1,680</span><span class="unit">/晚起</span><button class="btn btn-primary btn-small" data-id="room3" data-name="樱花和风旅馆 樱花主题家庭房" data-price="1680" onclick="addToOrder(this.dataset.id, this.dataset.name, parseInt(this.dataset.price))">预订</button></div>
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@
             <div class="sidebar-detail"><span>退房时间</span><strong>11:00前</strong></div>
             <div class="sidebar-detail"><span>取消政策</span><strong>入住3天前免费</strong></div>
             <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
-              <button class="btn btn-primary" onclick="showToast('已加入预订！')">立即预订</button>
+              <button class="btn btn-primary" onclick="addToOrder('hotel_sakura','樱花和风旅馆 预付房费',896)">立即预订</button>
               <button class="btn btn-secondary" onclick="showToast('已收藏 💖')">🤍 收藏</button>
             </div>
           </div>
@@ -174,6 +174,20 @@
     <div class="footer-bottom"><p>&copy; 2024 萌趣旅行 Kawaii Travel. All rights reserved. 💖</p></div>
   </footer>
   <div class="back-to-top">↑</div>
-  <script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/cart.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script><script src="js/main.js"></script><script src="js/cart.js"></script>
+  <script>
+    function addToOrder(id, name, price) {
+      var orders = getStorage('kawaii_orders', []);
+      orders.push({ id: 'ORD' + Date.now(), item: name, price: price, qty: 1, status: 'pending', date: new Date().toLocaleDateString(), type: 'hotel' });
+      setStorage('kawaii_orders', orders);
+      showToast('已加入订单！');
+    }
+    function toggleHotelFav() {
+      var liked = Favorites.toggle('hotel_sakura');
+      document.getElementById('favHotelBtn').textContent = liked ? '❤️ 已收藏' : '🦠 收藏';
+    }
+  </script>
 </body>
 </html>
+

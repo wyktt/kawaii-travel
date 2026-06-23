@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>萌趣旅行 - 让旅行充满可爱</title>
+  <title>钀岃叮鏃呰 - 璁╂梾琛屽厖婊″彲鐖?/title>
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/responsive.css">
   <style>
-    /* ---- 轮播 ---- */
+    /* ---- 杞挱 ---- */
     .carousel { position: relative; width: 100%; height: 80vh; min-height: 500px; overflow: hidden; margin-top: 0; }
     .carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease; display: flex; align-items: center; justify-content: center; }
     .carousel-slide.active { opacity: 1; }
@@ -30,13 +30,13 @@
     .slide-bg-2 { background: linear-gradient(135deg, #87CEEB 0%, #98D8C8 50%, #6BC4A6 100%); }
     .slide-bg-3 { background: linear-gradient(135deg, #FFF5BA 0%, #FFA07A 50%, #FF7F50 100%); }
 
-    /* ---- 搜索栏 ---- */
+    /* ---- 鎼滅储鏍?---- */
     .hero-search { display: flex; gap: 0; max-width: 680px; margin: 0 auto; background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); overflow: hidden; position: relative; z-index: 5; margin-top: -40px; }
     .hero-search input { flex: 1; padding: 18px 24px; font-size: 1rem; border: none; background: transparent; }
     .hero-search select { padding: 18px 16px; border: none; background: transparent; color: var(--text); font-size: 0.95rem; border-left: 1px solid var(--light-gray); cursor: pointer; }
     .hero-search .btn { border-radius: 0 var(--radius-xl) var(--radius-xl) 0; padding: 18px 32px; }
 
-    /* ---- 热门目的地 ---- */
+    /* ---- 鐑棬鐩殑鍦?---- */
     .dest-card { position: relative; border-radius: var(--radius-lg); overflow: hidden; height: 320px; cursor: pointer; }
     .dest-card .dest-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
     .dest-card:hover .dest-img { transform: scale(1.08); }
@@ -47,7 +47,7 @@
     .dest-card .dest-heart { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.9); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; transition: var(--transition); }
     .dest-card .dest-heart:hover, .dest-card .dest-heart.liked { background: #FF4466; color: #fff; }
 
-    /* ---- 酒店卡片 ---- */
+    /* ---- 閰掑簵鍗＄墖 ---- */
     .hotel-card { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); }
     .hotel-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
     .hotel-card .hotel-img { position: relative; height: 200px; overflow: hidden; }
@@ -62,7 +62,7 @@
     .hotel-card .price-new { font-size: 1.3rem; font-weight: bold; color: var(--coral-dark); }
     .hotel-card .price-unit { font-size: 0.8rem; color: var(--text-light); }
 
-    /* ---- 攻略 ---- */
+    /* ---- 鏀荤暐 ---- */
     .guide-card { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); }
     .guide-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
     .guide-card .guide-img { height: 180px; overflow: hidden; }
@@ -73,13 +73,13 @@
     .guide-card .guide-body h3 { font-size: 1.05rem; margin-bottom: 8px; }
     .guide-card .guide-body p { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
 
-    /* ---- 统计 ---- */
+    /* ---- 缁熻 ---- */
     .stats { background: linear-gradient(135deg, var(--pink), var(--coral)); padding: 60px var(--gap-lg); }
     .stats .container { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap-xl); text-align: center; color: var(--white); }
     .stat-item h3 { font-size: 2.5rem; margin-bottom: 4px; -webkit-text-fill-color: #fff; background: none; }
     .stat-item p { font-size: 0.95rem; opacity: 0.9; }
 
-    /* ---- 特色服务 ---- */
+    /* ---- 鐗硅壊鏈嶅姟 ---- */
     .feature-item { text-align: center; padding: 30px 20px; }
     .feature-icon { width: 80px; height: 80px; border-radius: var(--radius-round); background: linear-gradient(135deg, rgba(255,182,193,0.15), rgba(152,216,200,0.15)); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 16px; transition: var(--transition); }
     .feature-item:hover .feature-icon { transform: scale(1.15) rotate(5deg); }
@@ -88,61 +88,61 @@
   </style>
 </head>
 <body>
-  <!-- 导航 -->
+  <!-- 瀵艰埅 -->
   <nav class="navbar">
     <div class="nav-container">
-      <a href="index.html" class="nav-logo"><span class="logo-icon">✈️</span> 萌趣旅行</a>
+      <a href="index.html" class="nav-logo"><span class="logo-icon">鉁堬笍</span> 钀岃叮鏃呰</a>
       <div class="nav-links">
-        <a href="index.html" class="active">首页</a>
-        <a href="destinations.html">目的地</a>
-        <a href="hotels.html">酒店</a>
-        <a href="flights.html">机票</a>
-        <a href="guides.html">攻略</a>
-        <a href="about.html">关于我们</a>
+        <a href="index.html" class="active">棣栭〉</a>
+        <a href="destinations.html">鐩殑鍦?/a>
+        <a href="hotels.html">閰掑簵</a>
+        <a href="flights.html">鏈虹エ</a>
+        <a href="guides.html">鏀荤暐</a>
+        <a href="about.html">鍏充簬鎴戜滑</a>
       </div>
       <div class="nav-actions">
-        <a href="login.html" class="btn btn-secondary btn-small">登录</a>
-        <a href="register.html" class="btn btn-primary btn-small">注册</a>
+        <a href="login.html" class="btn btn-secondary btn-small">鐧诲綍</a>
+        <a href="register.html" class="btn btn-primary btn-small">娉ㄥ唽</a>
       </div>
       <div class="hamburger"><span></span><span></span><span></span></div>
     </div>
   </nav>
   <div class="mobile-menu">
     <span class="mobile-close">&times;</span>
-    <a href="index.html">首页</a>
-    <a href="destinations.html">目的地</a>
-    <a href="hotels.html">酒店</a>
-    <a href="flights.html">机票</a>
-    <a href="guides.html">攻略</a>
-    <a href="about.html">关于我们</a>
-    <a href="login.html">登录</a>
-    <a href="register.html">注册</a>
+    <a href="index.html">棣栭〉</a>
+    <a href="destinations.html">鐩殑鍦?/a>
+    <a href="hotels.html">閰掑簵</a>
+    <a href="flights.html">鏈虹エ</a>
+    <a href="guides.html">鏀荤暐</a>
+    <a href="about.html">鍏充簬鎴戜滑</a>
+    <a href="login.html">鐧诲綍</a>
+    <a href="register.html">娉ㄥ唽</a>
   </div>
 
-  <!-- 轮播 Hero -->
+  <!-- 杞挱 Hero -->
   <div class="carousel">
     <div class="carousel-slide active">
       <div class="slide-bg slide-bg-1"></div>
       <div class="slide-content">
-        <h2>🌸 探索东京的浪漫樱花季</h2>
-        <p>在浅草寺祈愿，在涩谷街头漫步，感受四季如画的东瀛之美</p>
-        <a href="destination-tokyo.html" class="btn btn-primary">立即探索</a>
+        <h2>馃尭 鎺㈢储涓滀含鐨勬氮婕ū鑺卞</h2>
+        <p>鍦ㄦ祬鑽夊绁堟効锛屽湪娑╄胺琛楀ご婕锛屾劅鍙楀洓瀛ｅ鐢荤殑涓滅€涗箣缇?/p>
+        <a href="destination-tokyo.html" class="btn btn-primary">绔嬪嵆鎺㈢储</a>
       </div>
     </div>
     <div class="carousel-slide">
       <div class="slide-bg slide-bg-2"></div>
       <div class="slide-content">
-        <h2>🗼 漫游巴黎的浪漫街头</h2>
-        <p>在埃菲尔铁塔下许愿，在塞纳河畔品尝地道法式甜品</p>
-        <a href="destination-paris.html" class="btn btn-primary">立即探索</a>
+        <h2>馃椉 婕父宸撮粠鐨勬氮婕澶?/h2>
+        <p>鍦ㄥ焹鑿插皵閾佸涓嬭鎰匡紝鍦ㄥ绾虫渤鐣斿搧灏濆湴閬撴硶寮忕敎鍝?/p>
+        <a href="destination-paris.html" class="btn btn-primary">绔嬪嵆鎺㈢储</a>
       </div>
     </div>
     <div class="carousel-slide">
       <div class="slide-bg slide-bg-3"></div>
       <div class="slide-content">
-        <h2>🏖️ 享受普吉岛的阳光沙滩</h2>
-        <p>碧海蓝天，椰风海韵，开启你的热带天堂之旅</p>
-        <a href="destination-phuket.html" class="btn btn-primary">立即探索</a>
+        <h2>馃彇锔?浜彈鏅悏宀涚殑闃冲厜娌欐哗</h2>
+        <p>纰ф捣钃濆ぉ锛屾ぐ椋庢捣闊碉紝寮€鍚綘鐨勭儹甯﹀ぉ鍫備箣鏃?/p>
+        <a href="destination-phuket.html" class="btn btn-primary">绔嬪嵆鎺㈢储</a>
       </div>
     </div>
     <div class="carousel-prev">&lt;</div>
@@ -154,93 +154,93 @@
     </div>
   </div>
 
-  <!-- 搜索栏 -->
+  <!-- 鎼滅储鏍?-->
   <div class="container">
     <div class="hero-search">
-      <input type="text" placeholder="🔍 搜索目的地、酒店或攻略...">
+      <input type="text" placeholder="馃攳 鎼滅储鐩殑鍦般€侀厭搴楁垨鏀荤暐...">
       <select>
-        <option>全部类型</option>
-        <option>目的地</option>
-        <option>酒店</option>
-        <option>机票</option>
-        <option>攻略</option>
+        <option>鍏ㄩ儴绫诲瀷</option>
+        <option>鐩殑鍦?/option>
+        <option>閰掑簵</option>
+        <option>鏈虹エ</option>
+        <option>鏀荤暐</option>
       </select>
-      <button class="btn btn-primary">搜索</button>
+      <button class="btn btn-primary">鎼滅储</button>
     </div>
   </div>
 
-  <!-- 特色服务 -->
+  <!-- 鐗硅壊鏈嶅姟 -->
   <section class="section">
     <div class="section-header scroll-animate">
-      <h2>🌟 为什么选择萌趣旅行</h2>
-      <p>让每一次旅行都充满可爱与惊喜</p>
+      <h2>馃専 涓轰粈涔堥€夋嫨钀岃叮鏃呰</h2>
+      <p>璁╂瘡涓€娆℃梾琛岄兘鍏呮弧鍙埍涓庢儕鍠?/p>
     </div>
     <div class="container grid-4">
       <div class="feature-item scroll-animate delay-1">
-        <div class="feature-icon">🎯</div>
-        <h3>精选推荐</h3>
-        <p>AI智能推荐，找到最适合你的目的地</p>
+        <div class="feature-icon">馃幆</div>
+        <h3>绮鹃€夋帹鑽?/h3>
+        <p>AI鏅鸿兘鎺ㄨ崘锛屾壘鍒版渶閫傚悎浣犵殑鐩殑鍦?/p>
       </div>
       <div class="feature-item scroll-animate delay-2">
-        <div class="feature-icon">💰</div>
-        <h3>超值价格</h3>
-        <p>全网比价，给你最优惠的旅行方案</p>
+        <div class="feature-icon">馃挵</div>
+        <h3>瓒呭€间环鏍?/h3>
+        <p>鍏ㄧ綉姣斾环锛岀粰浣犳渶浼樻儬鐨勬梾琛屾柟妗?/p>
       </div>
       <div class="feature-item scroll-animate delay-3">
-        <div class="feature-icon">🛡️</div>
-        <h3>安全保障</h3>
-        <p>24小时客服，全程为你保驾护航</p>
+        <div class="feature-icon">馃洝锔?/div>
+        <h3>瀹夊叏淇濋殰</h3>
+        <p>24灏忔椂瀹㈡湇锛屽叏绋嬩负浣犱繚椹炬姢鑸?/p>
       </div>
       <div class="feature-item scroll-animate delay-4">
-        <div class="feature-icon">💝</div>
-        <h3>贴心服务</h3>
-        <p>定制行程、签证协助，一站式搞定</p>
+        <div class="feature-icon">馃挐</div>
+        <h3>璐村績鏈嶅姟</h3>
+        <p>瀹氬埗琛岀▼銆佺璇佸崗鍔╋紝涓€绔欏紡鎼炲畾</p>
       </div>
     </div>
   </section>
 
-  <!-- 热门目的地 -->
+  <!-- 鐑棬鐩殑鍦?-->
   <section class="section" style="background: linear-gradient(180deg, #fff, #fff5f7);">
     <div class="section-header scroll-animate">
-      <h2>✈️ 热门目的地</h2>
-      <p>探索世界最美的角落</p>
+      <h2>鉁堬笍 鐑棬鐩殑鍦?/h2>
+      <p>鎺㈢储涓栫晫鏈€缇庣殑瑙掕惤</p>
     </div>
     <div class="container grid-3">
       <a href="destination-tokyo.html" class="dest-card scroll-animate delay-1">
         <div class="dest-img" style="background: linear-gradient(135deg, #FFB6C1, #FF8FA3);"></div>
-        <div class="dest-badge">🔥 热门</div>
-        <span class="dest-heart heart-btn" onclick="event.preventDefault(); event.stopPropagation();">🤍</span>
+        <div class="dest-badge">馃敟 鐑棬</div>
+        <span class="dest-heart heart-btn" onclick="event.preventDefault(); event.stopPropagation();">馃</span>
         <div class="dest-overlay">
-          <h3>🇯🇵 日本东京</h3>
-          <p>¥5,999起 · 樱花季 · 5天4晚</p>
+          <h3>馃嚡馃嚨 鏃ユ湰涓滀含</h3>
+          <p>楼5,999璧?路 妯辫姳瀛?路 5澶?鏅?/p>
         </div>
       </a>
       <a href="destination-paris.html" class="dest-card scroll-animate delay-2">
         <div class="dest-img" style="background: linear-gradient(135deg, #87CEEB, #6BC4A6);"></div>
-        <div class="dest-badge">💕 浪漫</div>
-        <span class="dest-heart heart-btn" onclick="event.preventDefault(); event.stopPropagation();">🤍</span>
+        <div class="dest-badge">馃挄 娴极</div>
+        <span class="dest-heart heart-btn" onclick="event.preventDefault(); event.stopPropagation();">馃</span>
         <div class="dest-overlay">
-          <h3>🇫🇷 法国巴黎</h3>
-          <p>¥12,999起 · 浪漫之都 · 7天6晚</p>
+          <h3>馃嚝馃嚪 娉曞浗宸撮粠</h3>
+          <p>楼12,999璧?路 娴极涔嬮兘 路 7澶?鏅?/p>
         </div>
       </a>
       <a href="destination-phuket.html" class="dest-card scroll-animate delay-3">
         <div class="dest-img" style="background: linear-gradient(135deg, #FFF5BA, #FFA07A);"></div>
-        <div class="dest-badge">🏖️ 度假</div>
-        <span class="dest-heart heart-btn" onclick="event.preventDefault(); event.stopPropagation();">🤍</span>
+        <div class="dest-badge">馃彇锔?搴﹀亣</div>
+        <span class="dest-heart heart-btn" onclick="event.preventDefault(); event.stopPropagation();">馃</span>
         <div class="dest-overlay">
-          <h3>🇹🇭 泰国普吉岛</h3>
-          <p>¥3,999起 · 海岛天堂 · 5天4晚</p>
+          <h3>馃嚬馃嚟 娉板浗鏅悏宀?/h3>
+          <p>楼3,999璧?路 娴峰矝澶╁爞 路 5澶?鏅?/p>
         </div>
       </a>
     </div>
   </section>
 
-  <!-- 热门酒店 -->
+  <!-- 鐑棬閰掑簵 -->
   <section class="section">
     <div class="section-header scroll-animate">
-      <h2>🏨 热门酒店</h2>
-      <p>精心挑选，给你最舒适的住宿体验</p>
+      <h2>馃彣 鐑棬閰掑簵</h2>
+      <p>绮惧績鎸戦€夛紝缁欎綘鏈€鑸掗€傜殑浣忓浣撻獙</p>
     </div>
     <div class="container grid-4">
       <div class="hotel-card scroll-animate delay-1">
@@ -249,13 +249,13 @@
           <span class="hotel-discount">-30%</span>
         </div>
         <div class="hotel-info">
-          <h3>🌸 樱花和风旅馆</h3>
-          <div class="hotel-location">📍 东京浅草</div>
-          <div class="stars">★★★★★</div>
+          <h3>馃尭 妯辫姳鍜岄鏃呴</h3>
+          <div class="hotel-location">馃搷 涓滀含娴呰崏</div>
+          <div class="stars">鈽呪槄鈽呪槄鈽?/div>
           <div class="hotel-price">
-            <span class="price-old">¥1,280</span>
-            <span class="price-new">¥896</span>
-            <span class="price-unit">/晚</span>
+            <span class="price-old">楼1,280</span>
+            <span class="price-new">楼896</span>
+            <span class="price-unit">/鏅?/span>
           </div>
         </div>
       </div>
@@ -265,13 +265,13 @@
           <span class="hotel-discount">-25%</span>
         </div>
         <div class="hotel-info">
-          <h3>🗼 埃菲尔景观酒店</h3>
-          <div class="hotel-location">📍 巴黎市中心</div>
-          <div class="stars">★★★★★</div>
+          <h3>馃椉 鍩冭彶灏旀櫙瑙傞厭搴?/h3>
+          <div class="hotel-location">馃搷 宸撮粠甯備腑蹇?/div>
+          <div class="stars">鈽呪槄鈽呪槄鈽?/div>
           <div class="hotel-price">
-            <span class="price-old">¥2,380</span>
-            <span class="price-new">¥1,785</span>
-            <span class="price-unit">/晚</span>
+            <span class="price-old">楼2,380</span>
+            <span class="price-new">楼1,785</span>
+            <span class="price-unit">/鏅?/span>
           </div>
         </div>
       </div>
@@ -281,13 +281,13 @@
           <span class="hotel-discount">-20%</span>
         </div>
         <div class="hotel-info">
-          <h3>🏖️ 海岛度假别墅</h3>
-          <div class="hotel-location">📍 普吉岛芭东</div>
-          <div class="stars">★★★★☆</div>
+          <h3>馃彇锔?娴峰矝搴﹀亣鍒</h3>
+          <div class="hotel-location">馃搷 鏅悏宀涜姯涓?/div>
+          <div class="stars">鈽呪槄鈽呪槄鈽?/div>
           <div class="hotel-price">
-            <span class="price-old">¥1,680</span>
-            <span class="price-new">¥1,344</span>
-            <span class="price-unit">/晚</span>
+            <span class="price-old">楼1,680</span>
+            <span class="price-new">楼1,344</span>
+            <span class="price-unit">/鏅?/span>
           </div>
         </div>
       </div>
@@ -297,121 +297,123 @@
           <span class="hotel-discount">-15%</span>
         </div>
         <div class="hotel-info">
-          <h3>🌙 月光花园酒店</h3>
-          <div class="hotel-location">📍 东京新宿</div>
-          <div class="stars">★★★★☆</div>
+          <h3>馃寵 鏈堝厜鑺卞洯閰掑簵</h3>
+          <div class="hotel-location">馃搷 涓滀含鏂板</div>
+          <div class="stars">鈽呪槄鈽呪槄鈽?/div>
           <div class="hotel-price">
-            <span class="price-old">¥980</span>
-            <span class="price-new">¥833</span>
-            <span class="price-unit">/晚</span>
+            <span class="price-old">楼980</span>
+            <span class="price-new">楼833</span>
+            <span class="price-unit">/鏅?/span>
           </div>
         </div>
       </div>
     </div>
     <div class="text-center mt-2 scroll-animate">
-      <a href="hotels.html" class="btn btn-secondary">查看更多酒店 →</a>
+      <a href="hotels.html" class="btn btn-secondary">鏌ョ湅鏇村閰掑簵 鈫?/a>
     </div>
   </section>
 
-  <!-- 热门攻略 -->
+  <!-- 鐑棬鏀荤暐 -->
   <section class="section" style="background: linear-gradient(180deg, #fff, #f0f8ff);">
     <div class="section-header scroll-animate">
-      <h2>📚 热门攻略</h2>
-      <p>达人分享，旅行不迷路</p>
+      <h2>馃摎 鐑棬鏀荤暐</h2>
+      <p>杈句汉鍒嗕韩锛屾梾琛屼笉杩疯矾</p>
     </div>
     <div class="container grid-3">
       <a href="guide-detail.html" class="guide-card scroll-animate delay-1">
         <div class="guide-img"><div style="width:100%;height:100%;background:linear-gradient(135deg,#FFB6C1,#FF8FA3);"></div></div>
         <div class="guide-body">
-          <div class="guide-meta"><span>📷 旅行达人小美</span><span>📅 2024-03-15</span><span>👁️ 3.2k</span></div>
-          <h3>东京7天深度游：从樱花到美食的完美行程</h3>
-          <p>分享我最近一次东京之行的完整攻略，包含交通、住宿、美食和必去景点...</p>
+          <div class="guide-meta"><span>馃摲 鏃呰杈句汉灏忕編</span><span>馃搮 2024-03-15</span><span>馃憗锔?3.2k</span></div>
+          <h3>涓滀含7澶╂繁搴︽父锛氫粠妯辫姳鍒扮編椋熺殑瀹岀編琛岀▼</h3>
+          <p>鍒嗕韩鎴戞渶杩戜竴娆′笢浜箣琛岀殑瀹屾暣鏀荤暐锛屽寘鍚氦閫氥€佷綇瀹裤€佺編椋熷拰蹇呭幓鏅偣...</p>
         </div>
       </a>
       <a href="guide-detail.html" class="guide-card scroll-animate delay-2">
         <div class="guide-img"><div style="width:100%;height:100%;background:linear-gradient(135deg,#87CEEB,#6BC4A6);"></div></div>
         <div class="guide-body">
-          <div class="guide-meta"><span>📷 环球旅行家阿杰</span><span>📅 2024-02-28</span><span>👁️ 5.1k</span></div>
-          <h3>巴黎穷游指南：学生党也能玩转浪漫之都</h3>
-          <p>谁说巴黎只能有钱人去？这份省钱攻略教你怎么用最少的钱玩最多的景点...</p>
+          <div class="guide-meta"><span>馃摲 鐜悆鏃呰瀹堕樋鏉?/span><span>馃搮 2024-02-28</span><span>馃憗锔?5.1k</span></div>
+          <h3>宸撮粠绌锋父鎸囧崡锛氬鐢熷厷涔熻兘鐜╄浆娴极涔嬮兘</h3>
+          <p>璋佽宸撮粠鍙兘鏈夐挶浜哄幓锛熻繖浠界渷閽辨敾鐣ユ暀浣犳€庝箞鐢ㄦ渶灏戠殑閽辩帺鏈€澶氱殑鏅偣...</p>
         </div>
       </a>
       <a href="guide-detail.html" class="guide-card scroll-animate delay-3">
         <div class="guide-img"><div style="width:100%;height:100%;background:linear-gradient(135deg,#FFF5BA,#FFA07A);"></div></div>
         <div class="guide-body">
-          <div class="guide-meta"><span>📷 海岛控小鱼</span><span>📅 2024-01-20</span><span>👁️ 2.8k</span></div>
-          <h3>普吉岛水上运动全攻略：浮潜、冲浪一网打尽</h3>
-          <p>作为一个水上运动爱好者，我来分享普吉岛最值得体验的水上项目...</p>
+          <div class="guide-meta"><span>馃摲 娴峰矝鎺у皬楸?/span><span>馃搮 2024-01-20</span><span>馃憗锔?2.8k</span></div>
+          <h3>鏅悏宀涙按涓婅繍鍔ㄥ叏鏀荤暐锛氭诞娼溿€佸啿娴竴缃戞墦灏?/h3>
+          <p>浣滀负涓€涓按涓婅繍鍔ㄧ埍濂借€咃紝鎴戞潵鍒嗕韩鏅悏宀涙渶鍊煎緱浣撻獙鐨勬按涓婇」鐩?..</p>
         </div>
       </a>
     </div>
     <div class="text-center mt-2 scroll-animate">
-      <a href="guides.html" class="btn btn-secondary">查看更多攻略 →</a>
+      <a href="guides.html" class="btn btn-secondary">鏌ョ湅鏇村鏀荤暐 鈫?/a>
     </div>
   </section>
 
-  <!-- 统计 -->
+  <!-- 缁熻 -->
   <div class="stats scroll-animate">
     <div class="container">
-      <div class="stat-item"><h3>100万+</h3><p>满意用户</p></div>
-      <div class="stat-item"><h3>5000+</h3><p>精选目的地</p></div>
-      <div class="stat-item"><h3>98%</h3><p>好评率</p></div>
-      <div class="stat-item"><h3>24h</h3><p>在线客服</p></div>
+      <div class="stat-item"><h3>100涓?</h3><p>婊℃剰鐢ㄦ埛</p></div>
+      <div class="stat-item"><h3>5000+</h3><p>绮鹃€夌洰鐨勫湴</p></div>
+      <div class="stat-item"><h3>98%</h3><p>濂借瘎鐜?/p></div>
+      <div class="stat-item"><h3>24h</h3><p>鍦ㄧ嚎瀹㈡湇</p></div>
     </div>
   </div>
 
   <!-- CTA -->
   <section class="section text-center scroll-animate" style="background: linear-gradient(135deg, #fff0f3, #e8f4f0);">
-    <h2 style="font-size:2rem; margin-bottom:12px;">准备好开启可爱旅行了吗？ 🎀</h2>
-    <p style="font-size:1.1rem; color:var(--text-light); margin-bottom:32px;">注册会员即享新人大礼包，最高立减 ¥500！</p>
-    <a href="register.html" class="btn btn-primary" style="font-size:1.1rem; padding: 16px 40px;">立即注册领取</a>
+    <h2 style="font-size:2rem; margin-bottom:12px;">鍑嗗濂藉紑鍚彲鐖辨梾琛屼簡鍚楋紵 馃巰</h2>
+    <p style="font-size:1.1rem; color:var(--text-light); margin-bottom:32px;">娉ㄥ唽浼氬憳鍗充韩鏂颁汉澶хぜ鍖咃紝鏈€楂樼珛鍑?楼500锛?/p>
+    <a href="register.html" class="btn btn-primary" style="font-size:1.1rem; padding: 16px 40px;">绔嬪嵆娉ㄥ唽棰嗗彇</a>
   </section>
 
-  <!-- 底部 -->
+  <!-- 搴曢儴 -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-brand">
-        <h3>✈️ 萌趣旅行</h3>
-        <p>让旅行充满可爱与惊喜。我们致力于为每一位旅行者提供最贴心、最有趣的旅行体验，让世界因你而更可爱。</p>
+        <h3>鉁堬笍 钀岃叮鏃呰</h3>
+        <p>璁╂梾琛屽厖婊″彲鐖变笌鎯婂枩銆傛垜浠嚧鍔涗簬涓烘瘡涓€浣嶆梾琛岃€呮彁渚涙渶璐村績銆佹渶鏈夎叮鐨勬梾琛屼綋楠岋紝璁╀笘鐣屽洜浣犺€屾洿鍙埍銆?/p>
         <div class="footer-social">
-          <a href="#">💬</a>
-          <a href="#">📱</a>
-          <a href="#">📷</a>
-          <a href="#">🐦</a>
+          <a href="#">馃挰</a>
+          <a href="#">馃摫</a>
+          <a href="#">馃摲</a>
+          <a href="#">馃惁</a>
         </div>
       </div>
       <div class="footer-col">
-        <h4>探索</h4>
-        <a href="destinations.html">热门目的地</a>
-        <a href="hotels.html">精选酒店</a>
-        <a href="flights.html">特价机票</a>
-        <a href="guides.html">旅游攻略</a>
+        <h4>鎺㈢储</h4>
+        <a href="destinations.html">鐑棬鐩殑鍦?/a>
+        <a href="hotels.html">绮鹃€夐厭搴?/a>
+        <a href="flights.html">鐗逛环鏈虹エ</a>
+        <a href="guides.html">鏃呮父鏀荤暐</a>
       </div>
       <div class="footer-col">
-        <h4>支持</h4>
-        <a href="about.html">关于我们</a>
-        <a href="#">帮助中心</a>
-        <a href="#">退改政策</a>
-        <a href="#">联系客服</a>
+        <h4>鏀寔</h4>
+        <a href="about.html">鍏充簬鎴戜滑</a>
+        <a href="#">甯姪涓績</a>
+        <a href="#">閫€鏀规斂绛?/a>
+        <a href="#">鑱旂郴瀹㈡湇</a>
       </div>
       <div class="footer-col">
-        <h4>我的账户</h4>
-        <a href="profile.html">个人中心</a>
-        <a href="favorites.html">我的收藏</a>
-        <a href="my-orders.html">我的订单</a>
-        <a href="settings.html">账户设置</a>
+        <h4>鎴戠殑璐︽埛</h4>
+        <a href="profile.html">涓汉涓績</a>
+        <a href="favorites.html">鎴戠殑鏀惰棌</a>
+        <a href="my-orders.html">鎴戠殑璁㈠崟</a>
+        <a href="settings.html">璐︽埛璁剧疆</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2024 萌趣旅行 Kawaii Travel. All rights reserved. 💖</p>
+      <p>&copy; 2024 钀岃叮鏃呰 Kawaii Travel. All rights reserved. 馃挅</p>
     </div>
   </footer>
 
-  <div class="back-to-top">↑</div>
+  <div class="back-to-top">鈫?/div>
 
   <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
   <script src="js/carousel.js"></script>
   <script src="js/main.js"></script>
   <script src="js/cart.js"></script>
 </body>
 </html>
+
