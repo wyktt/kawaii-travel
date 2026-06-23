@@ -114,55 +114,47 @@
   <script src="js/utils.js"></script>
   <script src="js/auth.js"></script><script src="js/main.js"></script><script src="js/cart.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var user = Auth.getCurrentUser();
+(function() {
+  function loadProfile() {
+    try {
+      var user = typeof Auth !== 'undefined' ? Auth.getCurrentUser() : null;
       if (!user) {
-        window.location.href = 'login.html';
-        return;
+        var raw = localStorage.getItem('kawaii_current_user');
+        user = raw ? JSON.parse(raw) : null;
       }
-
-      // Populate profile sidebar
-      document.getElementById('pProfileName').textContent = user.username || '萌趣用户';
-      document.getElementById('pProfileAvatar').textContent = user.avatar || '🧸';
-      if (user.bio) {
-        document.getElementById('pProfileBio').textContent = user.bio;
-      }
-
-      // Favorites count
+      if (!user) { window.location.href = 'login.html'; return; }
+      var el;
+      el = document.getElementById('pProfileName'); if (el) el.textContent = user.username || '萌趣用户';
+      el = document.getElementById('pProfileAvatar'); if (el) el.textContent = user.avatar || '🧸';
+      el = document.getElementById('pProfileBio'); if (el && user.bio) el.textContent = user.bio;
       var favs = getStorage('kawaii_favorites', []);
-      document.getElementById('pStatsFavs').textContent = favs.length || 0;
-
-      // Orders
+      el = document.getElementById('pStatsFavs'); if (el) el.textContent = favs.length || 0;
       var orders = getStorage('kawaii_orders', []);
-      document.getElementById('pStatsTrips').textContent = orders.length || 0;
-
-      // Render recent orders
+      el = document.getElementById('pStatsTrips'); if (el) el.textContent = orders.length || 0;
       var ordersEl = document.getElementById('pOrdersList');
-      if (orders.length > 0) {
+      if (ordersEl && orders.length > 0) {
         var html = '';
         orders.slice(-3).reverse().forEach(function(o) {
-          var statusClass = o.status === 'confirmed' ? 'status-confirmed' : 'status-pending';
-          var statusText = o.status === 'confirmed' ? '已确认' : '待支付';
+          var st = o.status === 'confirmed' ? 'status-confirmed' : 'status-pending';
+          var sl = o.status === 'confirmed' ? '已确认' : '待支付';
           html += '<div class="order-row"><div><strong>' + (o.item || o.name || '订单') + '</strong>';
-          html += '<div style="font-size:0.8rem;color:var(--text-light);">' + (o.date || '') + (o.qty ? ' · ' + o.qty + '人' : '') + '</div></div>';
-          html += '<span class="order-status ' + statusClass + '">' + statusText + '</span></div>';
+          html += '<div style="font-size:0.8rem;color:var(--text-light);">' + (o.date || '') + '</div></div>';
+          html += '<span class="order-status ' + st + '">' + sl + '</span></div>';
         });
         ordersEl.innerHTML = html;
       }
-
-      // Render favorites
       var favsGrid = document.getElementById('pFavsGrid');
       var destMap = {
-        'tokyo': { flag: '🇯🇵', name: '东京', price: '¥5,999起', href: 'destination-tokyo.html' },
-        'paris': { flag: '🇫🇷', name: '巴黎', price: '¥12,999起', href: 'destination-paris.html' },
-        'phuket': { flag: '🇹🇭', name: '普吉岛', price: '¥3,999起', href: 'destination-phuket.html' }
+        'tokyo': { flag: '\u{1f1ef}\u{1f1f5}', name: '东京', price: '¥5,999起', href: 'destination-tokyo.html' },
+        'paris': { flag: '\u{1f1eb}\u{1f1f7}', name: '巴黎', price: '¥12,999起', href: 'destination-paris.html' },
+        'phuket': { flag: '\u{1f1f9}\u{1f1ed}', name: '普吉岛', price: '¥3,999起', href: 'destination-phuket.html' }
       };
-      if (favs.length > 0) {
+      if (favsGrid && favs.length > 0) {
         var fh = '';
         favs.forEach(function(fid) {
           var d = destMap[fid];
           if (d) {
-            fh += '<a href="' + d.href + '" style="background:var(--white);border-radius:var(--radius-md);padding:16px;box-shadow:var(--shadow-sm);text-align:center;transition:var(--transition);display:block;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">';
+            fh += '<a href="' + d.href + '" style="background:var(--white);border-radius:var(--radius-md);padding:16px;box-shadow:var(--shadow-sm);text-align:center;display:block;">';
             fh += '<div style="font-size:2rem;margin-bottom:8px;">' + d.flag + '</div>';
             fh += '<div style="font-size:0.9rem;font-weight:600;">' + d.name + '</div>';
             fh += '<div style="font-size:0.8rem;color:var(--text-light);">' + d.price + '</div></a>';
@@ -170,8 +162,12 @@
         });
         if (fh) favsGrid.innerHTML = fh;
       }
-    });
-  </script>
+    } catch(e) { console.error('Profile load error:', e); }
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', loadProfile); }
+  else { loadProfile(); }
+})();
+</script>
 </body>
 </html>
 
