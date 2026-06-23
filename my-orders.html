@@ -88,6 +88,73 @@
         </div>
       </div>
     </div>
-  </section></section>
+  </section>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand"><h3>✈️ 萌趣旅行</h3><p>让旅行充满可爱与惊喜。</p><div class="footer-social"><a href="#">💬</a><a href="#">📱</a><a href="#">📷</a><a href="#">🐦</a></div></div>
+      <div class="footer-col"><h4>探索</h4><a href="destinations.html">热门目的地</a><a href="hotels.html">精选酒店</a><a href="flights.html">特价机票</a><a href="guides.html">旅游攻略</a></div>
+      <div class="footer-col"><h4>支持</h4><a href="about.html">关于我们</a><a href="#">帮助中心</a><a href="#">退改政策</a><a href="#">联系客服</a></div>
+      <div class="footer-col"><h4>我的账户</h4><a href="profile.html">个人中心</a><a href="favorites.html">我的收藏</a><a href="my-orders.html">我的订单</a><a href="settings.html">账户设置</a></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2024 萌趣旅行 Kawaii Travel. All rights reserved. 💖</p></div>
+  </footer>
+  <div class="back-to-top">↑</div>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+  (function() {
+    var STATUS_MAP = {
+      'pending': {label:'待支付',cls:'status-pending'},
+      'confirmed': {label:'已确认',cls:'status-confirmed'},
+      'completed': {label:'已完成',cls:'status-completed'},
+      'cancelled': {label:'已取消',cls:'status-cancelled'}
+    };
+    var curFilter = 'all';
 
-  
+    function load() {
+      try {
+        var u = typeof Auth !== 'undefined' ? Auth.getCurrentUser() : null;
+        if (!u) { var r = localStorage.getItem('kawaii_current_user'); u = r ? JSON.parse(r) : null; }
+        if (!u) { window.location.href = 'login.html'; return; }
+        var sn = document.getElementById('sideName');
+        var sa = document.getElementById('sideAvatar');
+        if (sn) sn.textContent = u.username || '萌趣用户';
+        if (sa) sa.textContent = u.avatar || '🧸';
+        render();
+      } catch(e) { console.error(e); }
+    }
+
+    function render() {
+      var orders = getStorage('kawaii_orders', []);
+      var c = document.getElementById('ordersContainer');
+      var e = document.getElementById('emptyOrders');
+      c.innerHTML = '';
+      var f = curFilter === 'all' ? orders : orders.filter(function(o) { return o.status === curFilter; });
+      if (!f.length) { e.style.display = 'block'; return; }
+      e.style.display = 'none';
+      f.forEach(function(order) {
+        var s = STATUS_MAP[order.status] || STATUS_MAP['pending'];
+        var card = document.createElement('div');
+        card.className = 'order-card scroll-animate visible';
+        card.innerHTML = '<div class="order-card-header"><span>订单号：' + order.id + '</span><span>' + (order.date || '') + ' 下单</span></div>' +
+          '<div class="order-card-body"><div class="order-info"><h3>' + (order.item || order.name || '订单') + '</h3><p>' + (order.qty ? order.qty + '人' : '') + '</p></div>' +
+          '<div class="order-price"><div class="price">¥' + order.price + '</div><div class="status"><span class="order-status ' + s.cls + '">' + s.label + '</span></div></div></div>';
+        c.appendChild(card);
+      });
+    }
+
+    window.filterOrders = function(f) {
+      curFilter = f;
+      document.querySelectorAll('.order-tab').forEach(function(t) { t.classList.remove('active'); });
+      event.target.classList.add('active');
+      render();
+    };
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
+    else load();
+  })();
+  </script>
+</body>
+</html>
