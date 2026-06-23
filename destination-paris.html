@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>法国巴黎 - 萌趣旅行</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .detail-hero { position: relative; height: 50vh; min-height: 360px; display: flex; align-items: flex-end; overflow: hidden; }
+    .detail-hero .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #87CEEB, #6BC4A6, #4A90B8); }
+    .detail-hero .hero-overlay { position: absolute; inset: 0; background: linear-gradient(transparent 50%, rgba(0,0,0,0.5)); }
+    .detail-hero .hero-info { position: relative; z-index: 2; color: var(--white); padding: 40px; width: 100%; }
+    .detail-hero .hero-info h1 { font-size: 2.6rem; margin-bottom: 8px; -webkit-text-fill-color: #fff; background: none; }
+    .detail-hero .hero-info p { font-size: 1.1rem; opacity: 0.9; }
+    .detail-meta { display: flex; gap: 24px; margin-top: 12px; flex-wrap: wrap; }
+    .detail-meta span { display: flex; align-items: center; gap: 6px; font-size: 0.9rem; }
+    .info-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
+    .info-section { margin-bottom: 32px; }
+    .info-section h2 { font-size: 1.5rem; margin-bottom: 16px; color: var(--dark); }
+    .info-section p { line-height: 1.8; color: var(--text); margin-bottom: 12px; }
+    .highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+    .highlight-item { text-align: center; padding: 20px; background: var(--off-white); border-radius: var(--radius-md); transition: var(--transition); }
+    .highlight-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); }
+    .highlight-item .icon { font-size: 2rem; margin-bottom: 8px; }
+    .highlight-item h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .highlight-item p { font-size: 0.8rem; color: var(--text-light); }
+    .sidebar-card { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); padding: 28px; position: sticky; top: 100px; }
+    .sidebar-card h3 { font-size: 1.2rem; margin-bottom: 16px; color: var(--dark); }
+    .sidebar-price { font-size: 2rem; font-weight: bold; color: var(--coral-dark); margin-bottom: 4px; }
+    .sidebar-price span { font-size: 0.9rem; color: var(--text-light); font-weight: normal; }
+    .sidebar-detail { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--light-gray); font-size: 0.9rem; color: var(--text-light); }
+    .sidebar-detail strong { color: var(--dark); }
+    .itinerary-item { display: flex; gap: 16px; margin-bottom: 20px; }
+    .itinerary-day { width: 50px; height: 50px; border-radius: var(--radius-round); background: linear-gradient(135deg, var(--sky), var(--mint)); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; flex-shrink: 0; }
+    .itinerary-content h4 { font-size: 1rem; margin-bottom: 4px; }
+    .itinerary-content p { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
+    @media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .highlights { grid-template-columns: repeat(2, 1fr); } .detail-hero .hero-info h1 { font-size: 1.8rem; } .sidebar-card { position: static; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><span class="logo-icon">✈️</span> 萌趣旅行</a>
+      <div class="nav-links"><a href="index.html">首页</a><a href="destinations.html" class="active">目的地</a><a href="hotels.html">酒店</a><a href="flights.html">机票</a><a href="guides.html">攻略</a><a href="about.html">关于我们</a></div>
+      <div class="nav-actions"><a href="login.html" class="btn btn-secondary btn-small">登录</a><a href="register.html" class="btn btn-primary btn-small">注册</a></div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu"><span class="mobile-close">&times;</span><a href="index.html">首页</a><a href="destinations.html">目的地</a><a href="hotels.html">酒店</a><a href="flights.html">机票</a><a href="guides.html">攻略</a><a href="about.html">关于我们</a><a href="login.html">登录</a><a href="register.html">注册</a></div>
+
+  <div class="detail-hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-info">
+      <h1>🇫🇷 法国巴黎</h1>
+      <p>在埃菲尔铁塔下许愿，在塞纳河畔品尝地道法式甜品</p>
+      <div class="detail-meta">
+        <span>📍 欧洲 · 法国</span><span>🌡️ 平均温度 16°C</span><span>🗣️ 法语</span><span>💰 欧元 (EUR)</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="info-grid">
+        <div>
+          <div class="info-section scroll-animate">
+            <h2>🗼 关于巴黎</h2>
+            <p>巴黎是法国的首都，被誉为"光之城"和"浪漫之都"。这座城市汇聚了世界顶级的艺术、时尚、美食与文化。从卢浮宫的蒙娜丽莎到香榭丽舍大街的时尚橱窗，从巴黎圣母院的哥特式建筑到蒙马特高地的艺术家气息，巴黎的每一个角落都充满着故事。</p>
+            <p>漫步在塞纳河畔，品尝一份正宗的法式可颂，或是在咖啡馆中度过一个慵懒的下午——这就是巴黎独有的浪漫生活方式。</p>
+          </div>
+          <div class="info-section scroll-animate">
+            <h2>✨ 必体验</h2>
+            <div class="highlights">
+              <div class="highlight-item"><div class="icon">🗼</div><h4>铁塔</h4><p>埃菲尔铁塔登顶</p></div>
+              <div class="highlight-item"><div class="icon">🎨</div><h4>艺术</h4><p>卢浮宫鉴赏名画</p></div>
+              <div class="highlight-item"><div class="icon">🥐</div><h4>美食</h4><p>法式甜品体验</p></div>
+              <div class="highlight-item"><div class="icon">🚢</div><h4>塞纳河</h4><p>游船夜游塞纳河</p></div>
+              <div class="highlight-item"><div class="icon">⛪</div><h4>圣母院</h4><p>巴黎圣母院参观</p></div>
+              <div class="highlight-item"><div class="icon">🛍️</div><h4>购物</h4><p>老佛爷百货血拼</p></div>
+            </div>
+          </div>
+          <div class="info-section scroll-animate">
+            <h2>📅 推荐行程</h2>
+            <div class="itinerary-item"><div class="itinerary-day">D1</div><div class="itinerary-content"><h4>抵达巴黎 · 香榭丽舍大街</h4><p>入住酒店后漫步香榭丽舍大街，在凯旋门拍照留念，傍晚欣赏埃菲尔铁塔灯光秀。</p></div></div>
+            <div class="itinerary-item"><div class="itinerary-day">D2</div><div class="itinerary-content"><h4>卢浮宫 · 杜乐丽花园</h4><p>上午参观卢浮宫三大镇馆之宝，下午在杜乐丽花园享受悠闲时光。</p></div></div>
+            <div class="itinerary-item"><div class="itinerary-day">D3</div><div class="itinerary-content"><h4>凡尔赛宫一日游</h4><p>前往凡尔赛宫，感受法式皇家园林的奢华与壮丽。</p></div></div>
+            <div class="itinerary-item"><div class="itinerary-day">D4</div><div class="itinerary-content"><h4>蒙马特 · 塞纳河游船</h4><p>探索蒙马特高地的艺术氛围，在圣心大教堂俯瞰巴黎全景，晚上乘塞纳河游船。</p></div></div>
+            <div class="itinerary-item"><div class="itinerary-day">D5</div><div class="itinerary-content"><h4>迪士尼乐园</h4><p>巴黎迪士尼乐园一日游，体验欧洲最大的主题乐园。</p></div></div>
+            <div class="itinerary-item"><div class="itinerary-day">D6-7</div><div class="itinerary-content"><h4>自由活动 · 返程</h4><p>老佛爷百货购物，品尝最后的法式大餐，前往机场。</p></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="sidebar-card scroll-animate">
+            <h3>套餐价格</h3>
+            <div class="sidebar-price">¥12,999 <span>/人起</span></div>
+            <div class="sidebar-detail"><span>行程天数</span><strong>7天6晚</strong></div>
+            <div class="sidebar-detail"><span>出发城市</span><strong>上海/北京</strong></div>
+            <div class="sidebar-detail"><span>往返机票</span><strong>含</strong></div>
+            <div class="sidebar-detail"><span>住宿标准</span><strong>4星酒店</strong></div>
+            <div class="sidebar-detail"><span>成团人数</span><strong>2人起</strong></div>
+            <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+              <button class="btn btn-primary" onclick="showToast('已添加到购物车！')">立即预订</button>
+              <button class="btn btn-secondary" onclick="showToast('已加入收藏 💖')">🤍 收藏</button>
+            </div>
+          </div>
+          <div class="sidebar-card scroll-animate" style="margin-top: 20px;">
+            <h3>📌 出行提示</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="padding: 10px 0; border-bottom: 1px solid var(--light-gray); font-size: 0.9rem;">🛂 签证：需提前办理法国申根签证</li>
+              <li style="padding: 10px 0; border-bottom: 1px solid var(--light-gray); font-size: 0.9rem;">💶 货币：建议携带少量欧元现金</li>
+              <li style="padding: 10px 0; border-bottom: 1px solid var(--light-gray); font-size: 0.9rem;">🚇 交通：购买巴黎交通通票（Navigo）</li>
+              <li style="padding: 10px 0; font-size: 0.9rem;">🔒 安全：注意随身物品防盗</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand"><h3>✈️ 萌趣旅行</h3><p>让旅行充满可爱与惊喜。</p><div class="footer-social"><a href="#">💬</a><a href="#">📱</a><a href="#">📷</a><a href="#">🐦</a></div></div>
+      <div class="footer-col"><h4>探索</h4><a href="destinations.html">热门目的地</a><a href="hotels.html">精选酒店</a><a href="flights.html">特价机票</a><a href="guides.html">旅游攻略</a></div>
+      <div class="footer-col"><h4>支持</h4><a href="about.html">关于我们</a><a href="#">帮助中心</a><a href="#">退改政策</a><a href="#">联系客服</a></div>
+      <div class="footer-col"><h4>我的账户</h4><a href="profile.html">个人中心</a><a href="favorites.html">我的收藏</a><a href="my-orders.html">我的订单</a><a href="settings.html">账户设置</a></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2024 萌趣旅行 Kawaii Travel. All rights reserved. 💖</p></div>
+  </footer>
+  <div class="back-to-top">↑</div>
+  <script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/cart.js"></script>
+</body>
+</html>

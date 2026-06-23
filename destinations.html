@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>目的地 - 萌趣旅行</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .filter-bar { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; align-items: center; }
+    .filter-bar input { flex: 1; min-width: 200px; padding: 12px 18px; border: 2px solid var(--light-gray); border-radius: var(--radius-xl); font-size: 0.95rem; transition: var(--transition); }
+    .filter-bar input:focus { border-color: var(--pink); box-shadow: 0 0 0 4px rgba(255,182,193,0.15); }
+    .dest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .dest-card { position: relative; border-radius: var(--radius-lg); overflow: hidden; height: 340px; cursor: pointer; transition: var(--transition); }
+    .dest-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+    .dest-card .dest-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .dest-card:hover .dest-img { transform: scale(1.08); }
+    .dest-card .dest-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; background: linear-gradient(transparent, rgba(0,0,0,0.65)); color: var(--white); }
+    .dest-card .dest-overlay h3 { font-size: 1.4rem; margin-bottom: 4px; -webkit-text-fill-color: #fff; background: none; }
+    .dest-card .dest-overlay p { font-size: 0.9rem; opacity: 0.9; }
+    .dest-card .dest-badge { position: absolute; top: 16px; left: 16px; background: rgba(255,255,255,0.9); padding: 6px 14px; border-radius: var(--radius-xl); font-size: 0.8rem; font-weight: 600; color: var(--pink-dark); }
+    .dest-card .dest-heart { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.9); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; transition: var(--transition); }
+    .dest-card .dest-heart:hover, .dest-card .dest-heart.liked { background: #FF4466; color: #fff; }
+    .sort-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .sort-bar .count { color: var(--text-light); font-size: 0.9rem; }
+    .sort-options { display: flex; gap: 8px; }
+    .sort-btn { padding: 8px 16px; border-radius: var(--radius-xl); font-size: 0.85rem; border: 1px solid var(--light-gray); background: var(--white); cursor: pointer; transition: var(--transition); }
+    .sort-btn:hover, .sort-btn.active { background: var(--pink); color: var(--white); border-color: var(--pink); }
+    @media (max-width: 1024px) { .dest-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .dest-grid { grid-template-columns: 1fr; } .dest-card { height: 280px; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><span class="logo-icon">✈️</span> 萌趣旅行</a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="destinations.html" class="active">目的地</a>
+        <a href="hotels.html">酒店</a>
+        <a href="flights.html">机票</a>
+        <a href="guides.html">攻略</a>
+        <a href="about.html">关于我们</a>
+      </div>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-secondary btn-small">登录</a>
+        <a href="register.html" class="btn btn-primary btn-small">注册</a>
+      </div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <span class="mobile-close">&times;</span>
+    <a href="index.html">首页</a>
+    <a href="destinations.html">目的地</a>
+    <a href="hotels.html">酒店</a>
+    <a href="flights.html">机票</a>
+    <a href="guides.html">攻略</a>
+    <a href="about.html">关于我们</a>
+    <a href="login.html">登录</a>
+    <a href="register.html">注册</a>
+  </div>
+
+  <div class="page-header">
+    <h1>🌍 探索目的地</h1>
+    <div class="breadcrumb"><a href="index.html">首页</a> / 目的地</div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="filter-bar">
+        <input type="text" placeholder="🔍 搜索目的地名称...">
+        <div class="tag active">全部</div>
+        <div class="tag">亚洲</div>
+        <div class="tag">欧洲</div>
+        <div class="tag">大洋洲</div>
+        <div class="tag">美洲</div>
+      </div>
+      <div class="sort-bar">
+        <span class="count">共找到 <strong>6</strong> 个目的地</span>
+        <div class="sort-options">
+          <button class="sort-btn active">推荐</button>
+          <button class="sort-btn">价格↑</button>
+          <button class="sort-btn">热度</button>
+        </div>
+      </div>
+      <div class="dest-grid">
+        <a href="destination-tokyo.html" class="dest-card scroll-animate delay-1">
+          <div class="dest-img" style="background: linear-gradient(135deg, #FFB6C1, #FF8FA3);"></div>
+          <div class="dest-badge">🔥 热门</div>
+          <span class="dest-heart heart-btn">🤍</span>
+          <div class="dest-overlay">
+            <h3>🇯🇵 日本东京</h3>
+            <p>¥5,999起 · 樱花季 · 5天4晚</p>
+          </div>
+        </a>
+        <a href="destination-paris.html" class="dest-card scroll-animate delay-2">
+          <div class="dest-img" style="background: linear-gradient(135deg, #87CEEB, #6BC4A6);"></div>
+          <div class="dest-badge">💕 浪漫</div>
+          <span class="dest-heart heart-btn">🤍</span>
+          <div class="dest-overlay">
+            <h3>🇫🇷 法国巴黎</h3>
+            <p>¥12,999起 · 浪漫之都 · 7天6晚</p>
+          </div>
+        </a>
+        <a href="destination-phuket.html" class="dest-card scroll-animate delay-3">
+          <div class="dest-img" style="background: linear-gradient(135deg, #FFF5BA, #FFA07A);"></div>
+          <div class="dest-badge">🏖️ 度假</div>
+          <span class="dest-heart heart-btn">🤍</span>
+          <div class="dest-overlay">
+            <h3>🇹🇭 泰国普吉岛</h3>
+            <p>¥3,999起 · 海岛天堂 · 5天4晚</p>
+          </div>
+        </a>
+        <a href="destination-tokyo.html" class="dest-card scroll-animate delay-1">
+          <div class="dest-img" style="background: linear-gradient(135deg, #D8BFD8, #DDA0DD);"></div>
+          <div class="dest-badge">🌸 赏花</div>
+          <span class="dest-heart heart-btn">🤍</span>
+          <div class="dest-overlay">
+            <h3>🇯🇵 日本京都</h3>
+            <p>¥5,499起 · 古都风情 · 4天3晚</p>
+          </div>
+        </a>
+        <a href="destination-paris.html" class="dest-card scroll-animate delay-2">
+          <div class="dest-img" style="background: linear-gradient(135deg, #B0E0E6, #ADD8E6);"></div>
+          <div class="dest-badge">🎭 文化</div>
+          <span class="dest-heart heart-btn">🤍</span>
+          <div class="dest-overlay">
+            <h3>🇬🇧 英国伦敦</h3>
+            <p>¥11,999起 · 经典英伦 · 6天5晚</p>
+          </div>
+        </a>
+        <a href="destination-phuket.html" class="dest-card scroll-animate delay-3">
+          <div class="dest-img" style="background: linear-gradient(135deg, #90EE90, #3CB371);"></div>
+          <div class="dest-badge">🌿 自然</div>
+          <span class="dest-heart heart-btn">🤍</span>
+          <div class="dest-overlay">
+            <h3>🇲🇻 马尔代夫</h3>
+            <p>¥8,999起 · 水上天堂 · 5天4晚</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>✈️ 萌趣旅行</h3>
+        <p>让旅行充满可爱与惊喜。我们致力于为每一位旅行者提供最贴心、最有趣的旅行体验，让世界因你而更可爱。</p>
+        <div class="footer-social">
+          <a href="#">💬</a><a href="#">📱</a><a href="#">📷</a><a href="#">🐦</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>探索</h4>
+        <a href="destinations.html">热门目的地</a>
+        <a href="hotels.html">精选酒店</a>
+        <a href="flights.html">特价机票</a>
+        <a href="guides.html">旅游攻略</a>
+      </div>
+      <div class="footer-col">
+        <h4>支持</h4>
+        <a href="about.html">关于我们</a>
+        <a href="#">帮助中心</a>
+        <a href="#">退改政策</a>
+        <a href="#">联系客服</a>
+      </div>
+      <div class="footer-col">
+        <h4>我的账户</h4>
+        <a href="profile.html">个人中心</a>
+        <a href="favorites.html">我的收藏</a>
+        <a href="my-orders.html">我的订单</a>
+        <a href="settings.html">账户设置</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2024 萌趣旅行 Kawaii Travel. All rights reserved. 💖</p></div>
+  </footer>
+  <div class="back-to-top">↑</div>
+  <script src="js/utils.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

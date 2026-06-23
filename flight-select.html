@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>选择航班 - 萌趣旅行</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .booking-progress { display: flex; justify-content: center; gap: 0; margin-bottom: 40px; }
+    .progress-step { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--text-light); }
+    .progress-step .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--light-gray); color: var(--text-light); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.85rem; }
+    .progress-step.active .step-num { background: linear-gradient(135deg, var(--pink), var(--coral)); color: var(--white); }
+    .progress-step.active { color: var(--pink-dark); font-weight: 600; }
+    .progress-step.done .step-num { background: var(--mint); color: var(--white); }
+    .progress-line { width: 60px; height: 2px; background: var(--light-gray); align-self: center; }
+    .flight-summary { background: var(--white); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-md); margin-bottom: 24px; }
+    .flight-summary-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .fare-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .fare-card { border: 2px solid var(--light-gray); border-radius: var(--radius-lg); padding: 24px; text-align: center; transition: var(--transition); cursor: pointer; position: relative; }
+    .fare-card:hover { border-color: var(--pink); }
+    .fare-card.selected { border-color: var(--pink); background: rgba(255,182,193,0.05); }
+    .fare-card.popular { border-color: var(--coral); }
+    .fare-card.popular::before { content: '热门'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--coral); color: var(--white); padding: 4px 14px; border-radius: var(--radius-xl); font-size: 0.75rem; font-weight: 600; }
+    .fare-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .fare-card .fare-price { font-size: 1.8rem; font-weight: bold; color: var(--coral-dark); margin: 12px 0; }
+    .fare-card .fare-price span { font-size: 0.85rem; color: var(--text-light); font-weight: normal; }
+    .fare-list { list-style: none; padding: 0; text-align: left; margin-top: 16px; }
+    .fare-list li { padding: 8px 0; font-size: 0.85rem; color: var(--text); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--off-white); }
+    .fare-list li:last-child { border: none; }
+    .fare-list .check { color: var(--mint-dark); }
+    .fare-list .cross { color: var(--gray); }
+    .btn-group { display: flex; gap: 12px; margin-top: 24px; justify-content: center; }
+    @media (max-width: 768px) { .fare-options { grid-template-columns: 1fr; } .booking-progress { flex-wrap: wrap; gap: 8px; } .progress-line { display: none; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><span class="logo-icon">✈️</span> 萌趣旅行</a>
+      <div class="nav-links"><a href="index.html">首页</a><a href="destinations.html">目的地</a><a href="hotels.html">酒店</a><a href="flights.html" class="active">机票</a><a href="guides.html">攻略</a><a href="about.html">关于我们</a></div>
+      <div class="nav-actions"><a href="login.html" class="btn btn-secondary btn-small">登录</a><a href="register.html" class="btn btn-primary btn-small">注册</a></div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu"><span class="mobile-close">&times;</span><a href="index.html">首页</a><a href="destinations.html">目的地</a><a href="hotels.html">酒店</a><a href="flights.html">机票</a><a href="guides.html">攻略</a><a href="about.html">关于我们</a><a href="login.html">登录</a><a href="register.html">注册</a></div>
+
+  <div class="page-header">
+    <h1>✈️ 选择航班</h1>
+    <div class="breadcrumb"><a href="index.html">首页</a> / <a href="flights.html">机票</a> / 选择航班</div>
+  </div>
+
+  <section class="section">
+    <div class="container" style="max-width: 900px;">
+      <div class="booking-progress scroll-animate">
+        <div class="progress-step done"><span class="step-num">✓</span> 搜索航班</div>
+        <div class="progress-line"></div>
+        <div class="progress-step active"><span class="step-num">2</span> 选择舱位</div>
+        <div class="progress-line"></div>
+        <div class="progress-step"><span class="step-num">3</span> 填写信息</div>
+        <div class="progress-line"></div>
+        <div class="progress-step"><span class="step-num">4</span> 确认订单</div>
+      </div>
+
+      <div class="flight-summary scroll-animate">
+        <div class="flight-summary-header">
+          <div>
+            <h3>✈️ 萌趣航空 KA 208</h3>
+            <p style="color:var(--text-light);font-size:0.9rem;margin-top:4px;">上海浦东 → 东京成田 · 直飞 · 3h10m</p>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:1.5rem;font-weight:bold;color:var(--coral-dark);">¥1,860</div>
+            <div style="font-size:0.8rem;color:var(--text-light);">经济舱基础价</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:32px;padding:16px 0;border-top:1px solid var(--light-gray);font-size:0.9rem;color:var(--text);">
+          <span>🕐 出发 08:30</span><span>📍 上海浦东 T2</span><span>🕐 到达 12:40</span><span>📍 东京成田 T1</span><span>📅 2024-04-10</span>
+        </div>
+      </div>
+
+      <h2 class="scroll-animate" style="margin-bottom:16px;">选择舱位</h2>
+      <div class="fare-options">
+        <div class="fare-card scroll-animate delay-1" onclick="document.querySelectorAll('.fare-card').forEach(c=>c.classList.remove('selected'));this.classList.add('selected');">
+          <h3>经济舱</h3>
+          <div style="font-size:0.8rem;color:var(--text-light);">基础票价</div>
+          <div class="fare-price">¥1,860 <span>/人</span></div>
+          <ul class="fare-list">
+            <li><span class="check">✓</span> 手提行李 7kg</li>
+            <li><span class="check">✓</span> 托运行李 23kg</li>
+            <li><span class="cross">✗</span> 选座</li>
+            <li><span class="cross">✗</span> 退改签</li>
+          </ul>
+        </div>
+        <div class="fare-card selected popular scroll-animate delay-2" onclick="document.querySelectorAll('.fare-card').forEach(c=>c.classList.remove('selected'));this.classList.add('selected');">
+          <h3>超级经济舱</h3>
+          <div style="font-size:0.8rem;color:var(--text-light);">推荐选择</div>
+          <div class="fare-price">¥2,880 <span>/人</span></div>
+          <ul class="fare-list">
+            <li><span class="check">✓</span> 手提行李 10kg</li>
+            <li><span class="check">✓</span> 托运行李 2×23kg</li>
+            <li><span class="check">✓</span> 免费选座</li>
+            <li><span class="check">✓</span> 免费改签</li>
+          </ul>
+        </div>
+        <div class="fare-card scroll-animate delay-3" onclick="document.querySelectorAll('.fare-card').forEach(c=>c.classList.remove('selected'));this.classList.add('selected');">
+          <h3>商务舱</h3>
+          <div style="font-size:0.8rem;color:var(--text-light);">尊享体验</div>
+          <div class="fare-price">¥5,680 <span>/人</span></div>
+          <ul class="fare-list">
+            <li><span class="check">✓</span> 手提行李 12kg</li>
+            <li><span class="check">✓</span> 托运行李 2×32kg</li>
+            <li><span class="check">✓</span> VIP选座</li>
+            <li><span class="check">✓</span> 免费退改签</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="btn-group scroll-animate">
+        <a href="flights.html" class="btn btn-secondary">← 返回搜索</a>
+        <a href="order-confirm.html" class="btn btn-primary" onclick="showToast('已选择超级经济舱')">下一步 →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand"><h3>✈️ 萌趣旅行</h3><p>让旅行充满可爱与惊喜。</p><div class="footer-social"><a href="#">💬</a><a href="#">📱</a><a href="#">📷</a><a href="#">🐦</a></div></div>
+      <div class="footer-col"><h4>探索</h4><a href="destinations.html">热门目的地</a><a href="hotels.html">精选酒店</a><a href="flights.html">特价机票</a><a href="guides.html">旅游攻略</a></div>
+      <div class="footer-col"><h4>支持</h4><a href="about.html">关于我们</a><a href="#">帮助中心</a><a href="#">退改政策</a><a href="#">联系客服</a></div>
+      <div class="footer-col"><h4>我的账户</h4><a href="profile.html">个人中心</a><a href="favorites.html">我的收藏</a><a href="my-orders.html">我的订单</a><a href="settings.html">账户设置</a></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2024 萌趣旅行 Kawaii Travel. All rights reserved. 💖</p></div>
+  </footer>
+  <div class="back-to-top">↑</div>
+  <script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/cart.js"></script>
+</body>
+</html>

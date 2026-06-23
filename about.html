@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于我们 - 萌趣旅行</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .about-hero { text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #fff0f3, #e8f4f0); margin-bottom: 48px; }
+    .about-hero h1 { font-size: 2.4rem; margin-bottom: 16px; background: linear-gradient(135deg, var(--pink-dark), var(--coral)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .about-hero p { font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+    .about-section { margin-bottom: 48px; }
+    .about-section h2 { font-size: 1.8rem; margin-bottom: 16px; text-align: center; background: linear-gradient(135deg, var(--pink-dark), var(--coral)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .about-section > p { text-align: center; color: var(--text-light); max-width: 700px; margin: 0 auto 32px; line-height: 1.8; }
+    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .team-card { text-align: center; background: var(--white); border-radius: var(--radius-lg); padding: 32px 20px; box-shadow: var(--shadow-sm); transition: var(--transition); }
+    .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+    .team-card .avatar { width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; }
+    .team-card h3 { font-size: 1rem; margin-bottom: 4px; }
+    .team-card .role { font-size: 0.8rem; color: var(--pink-dark); margin-bottom: 8px; }
+    .team-card p { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .value-card { text-align: center; padding: 32px 24px; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); transition: var(--transition); }
+    .value-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .value-card .icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .value-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .value-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+    .timeline { position: relative; max-width: 700px; margin: 0 auto; }
+    .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: linear-gradient(var(--pink), var(--coral)); transform: translateX(-50%); border-radius: 3px; }
+    .timeline-item { position: relative; padding: 20px 0; display: flex; align-items: center; }
+    .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+    .timeline-item .content { width: 45%; padding: 20px; background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+    .timeline-item:nth-child(odd) .content { text-align: right; }
+    .timeline-item .dot { width: 16px; height: 16px; border-radius: 50%; background: var(--pink); border: 3px solid var(--white); box-shadow: var(--shadow-sm); position: absolute; left: 50%; transform: translateX(-50%); z-index: 1; }
+    .timeline-item .year { font-size: 1.2rem; font-weight: bold; color: var(--pink-dark); margin-bottom: 4px; }
+    .timeline-item .content p { font-size: 0.9rem; color: var(--text-light); }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .contact-card { text-align: center; padding: 32px; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); transition: var(--transition); }
+    .contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .contact-card .icon { font-size: 2.2rem; margin-bottom: 12px; }
+    .contact-card h3 { font-size: 1rem; margin-bottom: 8px; }
+    .contact-card p { font-size: 0.9rem; color: var(--text-light); }
+    @media (max-width: 1024px) { .team-grid { grid-template-columns: repeat(2, 1fr); } .values-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .team-grid, .values-grid, .contact-grid { grid-template-columns: 1fr; } .timeline::before { left: 20px; } .timeline-item, .timeline-item:nth-child(odd) { flex-direction: row; padding-left: 50px; } .timeline-item .dot { left: 20px; } .timeline-item .content, .timeline-item:nth-child(odd) .content { width: 100%; text-align: left; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><span class="logo-icon">✈️</span> 萌趣旅行</a>
+      <div class="nav-links"><a href="index.html">首页</a><a href="destinations.html">目的地</a><a href="hotels.html">酒店</a><a href="flights.html">机票</a><a href="guides.html">攻略</a><a href="about.html" class="active">关于我们</a></div>
+      <div class="nav-actions"><a href="login.html" class="btn btn-secondary btn-small">登录</a><a href="register.html" class="btn btn-primary btn-small">注册</a></div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu"><span class="mobile-close">&times;</span><a href="index.html">首页</a><a href="destinations.html">目的地</a><a href="hotels.html">酒店</a><a href="flights.html">机票</a><a href="guides.html">攻略</a><a href="about.html">关于我们</a><a href="login.html">登录</a><a href="register.html">注册</a></div>
+
+  <div class="page-header">
+    <h1>💖 关于我们</h1>
+    <div class="breadcrumb"><a href="index.html">首页</a> / 关于我们</div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="about-section scroll-animate">
+        <h2>我们的故事</h2>
+        <p>萌趣旅行成立于2020年，由一群热爱旅行的年轻人创立。我们相信旅行不应该只是从一个地方到另一个地方，而应该是一段充满惊喜和温暖的旅程。我们的使命是让每一次旅行都变得可爱而有意义。</p>
+      </div>
+
+      <div class="about-section scroll-animate">
+        <h2>核心价值观</h2>
+        <div class="values-grid">
+          <div class="value-card"><div class="icon">🎯</div><h3>精选品质</h3><p>每一条路线、每一家酒店都经过严格筛选，只为给你最好的旅行体验。</p></div>
+          <div class="value-card"><div class="icon">💝</div><h3>贴心服务</h3><p>24小时客服在线，从行前规划到旅途支持，全程陪伴你的每一次出发。</p></div>
+          <div class="value-card"><div class="icon">🤝</div><h3>真诚透明</h3><p>无隐藏消费，无强制购物，让你明明白白消费，安安心心旅行。</p></div>
+        </div>
+      </div>
+
+      <div class="about-section scroll-animate">
+        <h2>发展历程</h2>
+        <div class="timeline">
+          <div class="timeline-item"><div class="dot"></div><div class="content"><div class="year">2020</div><p>萌趣旅行正式成立，首条东京樱花线路上线</p></div></div>
+          <div class="timeline-item"><div class="dot"></div><div class="content"><div class="year">2021</div><p>用户突破10万，拓展巴黎、普吉岛等热门目的地</p></div></div>
+          <div class="timeline-item"><div class="dot"></div><div class="content"><div class="year">2023</div><p>用户突破100万，推出AI智能行程规划功能</p></div></div>
+          <div class="timeline-item"><div class="dot"></div><div class="content"><div class="year">2024</div><p>覆盖全球50+目的地，服务满意度达98%</p></div></div>
+        </div>
+      </div>
+
+      <div class="about-section scroll-animate">
+        <h2>我们的团队</h2>
+        <div class="team-grid">
+          <div class="team-card"><div class="avatar" style="background:linear-gradient(135deg,#FFB6C1,#FF8FA3);">🌸</div><h3>小美</h3><div class="role">创始人 & CEO</div><p>前旅行博主，走遍30+国家，把对旅行的热爱变成了事业。</p></div>
+          <div class="team-card"><div class="avatar" style="background:linear-gradient(135deg,#87CEEB,#6BC4A6);">🗼</div><h3>阿杰</h3><div class="role">产品总监</div><p>10年互联网产品经验，致力于打造最好的旅行预订体验。</p></div>
+          <div class="team-card"><div class="avatar" style="background:linear-gradient(135deg,#FFF5BA,#FFA07A);">🏖️</div><h3>小鱼</h3><div class="role">运营总监</div><p>前OTA平台运营负责人，擅长发现小众目的地和独特玩法。</p></div>
+          <div class="team-card"><div class="avatar" style="background:linear-gradient(135deg,#D8BFD8,#DDA0DD);">🏯</div><h3>小林</h3><div class="role">技术总监</div><p>全栈工程师，用技术让旅行变得更简单、更智能。</p></div>
+        </div>
+      </div>
+
+      <div class="about-section scroll-animate">
+        <h2>联系我们</h2>
+        <div class="contact-grid">
+          <div class="contact-card"><div class="icon">📞</div><h3>客服热线</h3><p>400-888-9999<br>每天 09:00 - 22:00</p></div>
+          <div class="contact-card"><div class="icon">📧</div><h3>邮箱</h3><p>hello@kawaii-travel.com<br>合作：business@kawaii-travel.com</p></div>
+          <div class="contact-card"><div class="icon">📍</div><h3>地址</h3><p>上海市浦东新区<br>世纪大道100号 萌趣大厦 18F</p></div>
+        </div>
+      </div>
+
+      <div class="stats scroll-animate" style="border-radius: var(--radius-lg); overflow: hidden;">
+        <div class="container">
+          <div class="stat-item"><h3>100万+</h3><p>满意用户</p></div>
+          <div class="stat-item"><h3>5000+</h3><p>精选目的地</p></div>
+          <div class="stat-item"><h3>98%</h3><p>好评率</p></div>
+          <div class="stat-item"><h3>24h</h3><p>在线客服</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand"><h3>✈️ 萌趣旅行</h3><p>让旅行充满可爱与惊喜。</p><div class="footer-social"><a href="#">💬</a><a href="#">📱</a><a href="#">📷</a><a href="#">🐦</a></div></div>
+      <div class="footer-col"><h4>探索</h4><a href="destinations.html">热门目的地</a><a href="hotels.html">精选酒店</a><a href="flights.html">特价机票</a><a href="guides.html">旅游攻略</a></div>
+      <div class="footer-col"><h4>支持</h4><a href="about.html">关于我们</a><a href="#">帮助中心</a><a href="#">退改政策</a><a href="#">联系客服</a></div>
+      <div class="footer-col"><h4>我的账户</h4><a href="profile.html">个人中心</a><a href="favorites.html">我的收藏</a><a href="my-orders.html">我的订单</a><a href="settings.html">账户设置</a></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2024 萌趣旅行 Kawaii Travel. All rights reserved. 💖</p></div>
+  </footer>
+  <div class="back-to-top">↑</div>
+  <script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/cart.js"></script>
+</body>
+</html>

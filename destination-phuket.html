@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>泰国普吉岛 - 萌趣旅行</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .detail-hero { position: relative; height: 50vh; min-height: 360px; display: flex; align-items: flex-end; overflow: hidden; }
+    .detail-hero .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #FFF5BA, #FFA07A, #FF7F50); }
+    .detail-hero .hero-overlay { position: absolute; inset: 0; background: linear-gradient(transparent 50%, rgba(0,0,0,0.5)); }
+    .detail-hero .hero-info { position: relative; z-index: 2; color: var(--white); padding: 40px; width: 100%; }
+    .detail-hero .hero-info h1 { font-size: 2.6rem; margin-bottom: 8px; -webkit-text-fill-color: #fff; background: none; }
+    .detail-hero .hero-info p { font-size: 1.1rem; opacity: 0.9; }
+    .detail-meta { display: flex; gap: 24px; margin-top: 12px; flex-wrap: wrap; }
+    .detail-meta span { display: flex; align-items: center; gap: 6px; font-size: 0.9rem; }
+    .info-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
+    .info-section { margin-bottom: 32px; }
+    .info-section h2 { font-size: 1.5rem; margin-bottom: 16px; color: var(--dark); }
+    .info-section p { line-height: 1.8; color: var(--text); margin-bottom: 12px; }
+    .highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+    .highlight-item { text-align: center; padding: 20px; background: var(--off-white); border-radius: var(--radius-md); transition: var(--transition); }
+    .highlight-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); }
+    .highlight-item .icon { font-size: 2rem; margin-bottom: 8px; }
+    .highlight-item h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .highlight-item p { font-size: 0.8rem; color: var(--text-light); }
+    .sidebar-card { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); padding: 28px; position: sticky; top: 100px; }
+    .sidebar-card h3 { font-size: 1.2rem; margin-bottom: 16px; color: var(--dark); }
+    .sidebar-price { font-size: 2rem; font-weight: bold; color: var(--coral-dark); margin-bottom: 4px; }
+    .sidebar-price span { font-size: 0.9rem; color: var(--text-light); font-weight: normal; }
+    .sidebar-detail { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--light-gray); font-size: 0.9rem; color: var(--text-light); }
+    .sidebar-detail strong { color: var(--dark); }
+    .itinerary-item { display: flex; gap: 16px; margin-bottom: 20px; }
+    .itinerary-day { width: 50px; height: 50px; border-radius: var(--radius-round); background: linear-gradient(135deg, var(--cream), var(--coral)); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; flex-shrink: 0; }
+    .itinerary-content h4 { font-size: 1rem; margin-bottom: 4px; }
+    .itinerary-content p { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
+    @media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .highlights { grid-template-columns: repeat(2, 1fr); } .detail-hero .hero-info h1 { font-size: 1.8rem; } .sidebar-card { position: static; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><span class="logo-icon">✈️</span> 萌趣旅行</a>
+      <div class="nav-links"><a href="index.html">首页</a><a href="destinations.html" class="active">目的地</a><a href="hotels.html">酒店</a><a href="flights.html">机票</a><a href="guides.html">攻略</a><a href="about.html">关于我们</a></div>
+      <div class="nav-actions"><a href="login.html" class="btn btn-secondary btn-small">登录</a><a href="register.html" class="btn btn-primary btn-small">注册</a></div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu"><span class="mobile-close">&times;</span><a href="index.html">首页</a><a href="destinations.html">目的地</a><a href="hotels.html">酒店</a><a href="flights.html">机票</a><a href="guides.html">攻略</a><a href="about.html">关于我们</a><a href="login.html">登录</a><a href="register.html">注册</a></div>
+
+  <div class="detail-hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-info">
+      <h1>🇹🇭 泰国普吉岛</h1>
+      <p>碧海蓝天，椰风海韵，开启你的热带天堂之旅</p>
+      <div class="detail-meta">
+        <span>📍 东南亚 · 泰国</span><span>🌡️ 平均温度 30°C</span><span>🗣️ 泰语</span><span>💰 泰铢 (THB)</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="info-grid">
+        <div>
+          <div class="info-section scroll-animate">
+            <h2>🏖️ 关于普吉岛</h2>
+            <p>普吉岛是泰国最大的岛屿，也是东南亚最受欢迎的度假胜地之一。这里拥有细腻的白沙滩、清澈碧绿的海水、茂密的热带雨林和丰富的水上活动。从芭东的热闹夜生活到攀牙湾的壮丽喀斯特地貌，普吉岛能满足每一位旅行者的需求。</p>
+            <p>在这里，你可以品尝正宗的泰式料理，在泰式按摩中彻底放松，也可以乘船跳岛探索周边的美丽小岛。无论你是蜜月旅行还是家庭度假，普吉岛都是完美的选择。</p>
+          </div>
+          <div class="info-section scroll-animate">
+            <h2>✨ 必体验</h2>
+            <div class="highlights">
+              <div class="highlight-item"><div class="icon">🤿</div><h4>浮潜</h4><p>斯米兰岛浮潜</p></div>
+              <div class="highlight-item"><div class="icon">🛶</div><h4>皮划艇</h4><p>攀牙湾探秘</p></div>
+              <div class="highlight-item"><div class="icon">💆</div><h4>SPA</h4><p>泰式古法按摩</p></div>
+              <div class="highlight-item"><div class="icon">🌅</div><h4>日落</h4><p>卡伦海滩日落</p></div>
+              <div class="highlight-item"><div class="icon">🐘</div><h4>大象</h4><p>大象保护区探访</p></div>
+              <div class="highlight-item"><div class="icon">🍜</div><h4>美食</h4><p>夜市泰式小吃</p></div>
+            </div>
+          </div>
+          <div class="info-section scroll-animate">
+            <h2>📅 推荐行程</h2>
+            <div class="itinerary-item"><div class="itinerary-day">D1</div><div class="itinerary-content"><h4>抵达普吉 · 芭东海滩</h4><p>入住海边度假酒店，下午在芭东海滩享受阳光沙滩，晚上逛芭东夜市。</p></div></div>
+            <div class="itinerary-item"><div class="itinerary-day">D2</div><div class="itinerary-content"><h4>斯米兰岛一日游</h4><p>乘快艇前往斯米兰群岛，浮潜观赏热带鱼群，在无人沙滩上野餐。</p></div></div>
+            <div class="itinerary-item"><div class="itinerary-day">D3</div><div class="itinerary-content"><h4>攀牙湾 · 007岛</h4><p>探访007电影取景地攀牙湾，划皮划艇穿越溶洞，感受壮丽的自然奇观。</p></div></div>
+            <div class="itinerary-item"><div class="itinerary-day">D4</div><div class="itinerary-content"><h4>SPA · 大象保护区</h4><p>上午享受正宗泰式SPA，下午前往大象保护区与大象亲密互动。</p></div></div>
+            <div class="itinerary-item"><div class="itinerary-day">D5</div><div class="itinerary-content"><h4>查龙寺 · 返程</h4><p>参观普吉岛最大的查龙寺，购买伴手礼，前往机场。</p></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="sidebar-card scroll-animate">
+            <h3>套餐价格</h3>
+            <div class="sidebar-price">¥3,999 <span>/人起</span></div>
+            <div class="sidebar-detail"><span>行程天数</span><strong>5天4晚</strong></div>
+            <div class="sidebar-detail"><span>出发城市</span><strong>广州/深圳</strong></div>
+            <div class="sidebar-detail"><span>往返机票</span><strong>含</strong></div>
+            <div class="sidebar-detail"><span>住宿标准</span><strong>海边度假酒店</strong></div>
+            <div class="sidebar-detail"><span>成团人数</span><strong>2人起</strong></div>
+            <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+              <button class="btn btn-primary" onclick="showToast('已添加到购物车！')">立即预订</button>
+              <button class="btn btn-secondary" onclick="showToast('已加入收藏 💖')">🤍 收藏</button>
+            </div>
+          </div>
+          <div class="sidebar-card scroll-animate" style="margin-top: 20px;">
+            <h3>📌 出行提示</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="padding: 10px 0; border-bottom: 1px solid var(--light-gray); font-size: 0.9rem;">🛂 签证：可办落地签或提前办旅游签</li>
+              <li style="padding: 10px 0; border-bottom: 1px solid var(--light-gray); font-size: 0.9rem;">☀️ 防晒：务必携带高倍数防晒霜</li>
+              <li style="padding: 10px 0; border-bottom: 1px solid var(--light-gray); font-size: 0.9rem;">🛵 交通：可租摩托车或包车游览</li>
+              <li style="padding: 10px 0; font-size: 0.9rem;">🌧️ 旱季：11月-4月是最佳旅行季节</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand"><h3>✈️ 萌趣旅行</h3><p>让旅行充满可爱与惊喜。</p><div class="footer-social"><a href="#">💬</a><a href="#">📱</a><a href="#">📷</a><a href="#">🐦</a></div></div>
+      <div class="footer-col"><h4>探索</h4><a href="destinations.html">热门目的地</a><a href="hotels.html">精选酒店</a><a href="flights.html">特价机票</a><a href="guides.html">旅游攻略</a></div>
+      <div class="footer-col"><h4>支持</h4><a href="about.html">关于我们</a><a href="#">帮助中心</a><a href="#">退改政策</a><a href="#">联系客服</a></div>
+      <div class="footer-col"><h4>我的账户</h4><a href="profile.html">个人中心</a><a href="favorites.html">我的收藏</a><a href="my-orders.html">我的订单</a><a href="settings.html">账户设置</a></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2024 萌趣旅行 Kawaii Travel. All rights reserved. 💖</p></div>
+  </footer>
+  <div class="back-to-top">↑</div>
+  <script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/cart.js"></script>
+</body>
+</html>

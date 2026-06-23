@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>东京7天深度游攻略 - 萌趣旅行</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .article-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
+    .article-header { margin-bottom: 32px; }
+    .article-header h1 { font-size: 2rem; margin-bottom: 16px; line-height: 1.4; }
+    .article-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 0.9rem; color: var(--text-light); }
+    .author-card { display: flex; align-items: center; gap: 12px; }
+    .author-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+    .article-cover { width: 100%; height: 360px; border-radius: var(--radius-lg); margin-bottom: 32px; }
+    .article-content { font-size: 1rem; line-height: 2; color: var(--text); }
+    .article-content h2 { font-size: 1.4rem; margin: 32px 0 16px; color: var(--dark); padding-left: 12px; border-left: 4px solid var(--pink); }
+    .article-content p { margin-bottom: 16px; }
+    .article-content .tip-box { background: rgba(152,216,200,0.1); border-left: 4px solid var(--mint); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 20px 0; font-size: 0.9rem; }
+    .article-content .warning-box { background: rgba(255,160,122,0.1); border-left: 4px solid var(--coral); padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 20px 0; font-size: 0.9rem; }
+    .article-content .day-plan { background: var(--off-white); border-radius: var(--radius-md); padding: 20px; margin: 16px 0; }
+    .article-content .day-plan h3 { font-size: 1.1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .article-content .day-plan p { margin-bottom: 8px; }
+    .sidebar-widget { background: var(--white); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-sm); margin-bottom: 20px; }
+    .sidebar-widget h3 { font-size: 1.1rem; margin-bottom: 16px; color: var(--dark); }
+    .toc-list { list-style: none; padding: 0; }
+    .toc-list li { padding: 8px 0; border-bottom: 1px solid var(--light-gray); }
+    .toc-list li:last-child { border: none; }
+    .toc-list a { font-size: 0.9rem; color: var(--text-light); transition: var(--transition); }
+    .toc-list a:hover { color: var(--pink-dark); padding-left: 4px; }
+    .related-card { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--light-gray); }
+    .related-card:last-child { border: none; }
+    .related-thumb { width: 80px; height: 60px; border-radius: var(--radius-sm); flex-shrink: 0; }
+    .related-info h4 { font-size: 0.85rem; margin-bottom: 4px; line-height: 1.3; }
+    .related-info span { font-size: 0.75rem; color: var(--text-light); }
+    .article-actions { display: flex; gap: 16px; margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--light-gray); }
+    .action-btn { display: flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: var(--radius-xl); background: var(--off-white); font-size: 0.9rem; cursor: pointer; transition: var(--transition); }
+    .action-btn:hover { background: var(--pink); color: var(--white); }
+    @media (max-width: 768px) { .article-layout { grid-template-columns: 1fr; } .article-header h1 { font-size: 1.5rem; } .article-cover { height: 220px; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><span class="logo-icon">✈️</span> 萌趣旅行</a>
+      <div class="nav-links"><a href="index.html">首页</a><a href="destinations.html">目的地</a><a href="hotels.html">酒店</a><a href="flights.html">机票</a><a href="guides.html" class="active">攻略</a><a href="about.html">关于我们</a></div>
+      <div class="nav-actions"><a href="login.html" class="btn btn-secondary btn-small">登录</a><a href="register.html" class="btn btn-primary btn-small">注册</a></div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu"><span class="mobile-close">&times;</span><a href="index.html">首页</a><a href="destinations.html">目的地</a><a href="hotels.html">酒店</a><a href="flights.html">机票</a><a href="guides.html">攻略</a><a href="about.html">关于我们</a><a href="login.html">登录</a><a href="register.html">注册</a></div>
+
+  <div class="page-header">
+    <h1>📚 攻略详情</h1>
+    <div class="breadcrumb"><a href="index.html">首页</a> / <a href="guides.html">攻略</a> / 东京7天深度游</div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="article-layout">
+        <div>
+          <div class="article-header scroll-animate">
+            <h1>东京7天深度游：从樱花到美食的完美行程</h1>
+            <div class="article-meta">
+              <div class="author-card"><div class="author-avatar" style="background:linear-gradient(135deg,#FFB6C1,#FF8FA3);">📷</div><div><div style="font-weight:600;color:var(--dark);">旅行达人小美</div><div style="font-size:0.8rem;">资深日本旅行达人</div></div></div>
+              <span>📅 2024-03-15</span><span>👁️ 3,200</span><span>💬 128</span><span>❤️ 456</span>
+            </div>
+          </div>
+
+          <div class="article-cover scroll-animate"><div style="width:100%;height:100%;border-radius:var(--radius-lg);background:linear-gradient(135deg,#FFB6C1,#FF8FA3,#FFA07A);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;">🌸 东京樱花之旅</div></div>
+
+          <div class="article-content scroll-animate">
+            <p>大家好！我是小美，一个重度日本旅行爱好者。这次用7天时间走遍东京最经典和最隐秘的角落，从樱花烂漫的公园到烟火气十足的小巷，希望这份攻略能帮到即将出发的你。</p>
+
+            <h2 id="day1">Day 1：浅草寺与晴空塔</h2>
+            <div class="day-plan">
+              <h3>🗓️ 第一天</h3>
+              <p>上午抵达东京，先到酒店放行李。下午前往浅草寺，穿过雷门后在仲见世通品尝各种小吃。傍晚步行到晴空塔，在展望台欣赏东京全景日落。</p>
+              <p><strong>推荐美食：</strong>浅草メンチ（炸肉饼）、木村家人形烧</p>
+              <p><strong>交通：</strong>从成田机场乘坐Skyliner到上野，换乘银座线到浅草</p>
+            </div>
+
+            <h2 id="day2">Day 2：涩谷、原宿与新宿</h2>
+            <div class="day-plan">
+              <h3>🗓️ 第二天</h3>
+              <p>早上在涩谷十字路口感受东京的繁忙脉搏，然后沿着�的表参道漫步到原宿竹下通。下午去明治神宫参拜，傍晚在新宿逛街吃饭，晚上登上东京都厅展望台看夜景。</p>
+            </div>
+
+            <div class="tip-box">💡 <strong>省钱小贴士：</strong>东京都厅展望台完全免费，夜景堪比收费观景台！建议下午5点左右到达，可以同时欣赏日落和夜景。</div>
+
+            <h2 id="day3">Day 3：秋叶原与银座</h2>
+            <div class="day-plan">
+              <h3>🗓️ 第三天</h3>
+              <p>上午在秋叶原的动漫天堂中畅游，从Animate到Radio会馆，二次元爱好者的终极圣地。下午前往银座，体验高端购物和精致下午茶。</p>
+            </div>
+
+            <h2 id="day4">Day 4：筑地市场与台场</h2>
+            <div class="day-plan">
+              <h3>🗓️ 第四天</h3>
+              <p>一早前往丰洲市场（原筑地外市场）品尝最新鲜的寿司和海鲜。下午前往台场海滨公园，逛DiverCity看独角兽高达，晚上在彩虹大桥下看灯光秀。</p>
+            </div>
+
+            <div class="warning-box">⚠️ <strong>注意事项：</strong>丰洲市场的场内市场观光需要提前预约，建议出发前在官网预约早上8:30的参观时段。</div>
+
+            <h2 id="food">必吃美食清单</h2>
+            <p>东京是全球米其林餐厅最多的城市，但平民美食同样精彩：</p>
+            <p>🍣 <strong>寿司</strong> - 推荐去筑地的寿司大排队，或者新宿的回转寿司</p>
+            <p>🍜 <strong>拉面</strong> - 一蘭拉面（游客友好）、AFURI柚子盐拉面</p>
+            <p>🍡 <strong>甜品</strong> - Flipper's舒芙蕾松饼、HARBS水果千层</p>
+            <p>🥩 <strong>烤肉</strong> - 新宿的烤肉店，和牛入口即化</p>
+          </div>
+
+          <div class="article-actions scroll-animate">
+            <div class="action-btn" onclick="this.classList.toggle('liked');showToast(this.classList.contains('liked')?'已点赞 ❤️':'已取消点赞')">❤️ 456</div>
+            <div class="action-btn" onclick="showToast('已收藏')">⭐ 收藏</div>
+            <div class="action-btn" onclick="showToast('链接已复制')">🔗 分享</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="sidebar-widget scroll-animate" style="position:sticky;top:100px;">
+            <h3>📑 目录</h3>
+            <ul class="toc-list">
+              <li><a href="#day1">Day 1：浅草寺与晴空塔</a></li>
+              <li><a href="#day2">Day 2：涩谷、原宿与新宿</a></li>
+              <li><a href="#day3">Day 3：秋叶原与银座</a></li>
+              <li><a href="#day4">Day 4：筑地市场与台场</a></li>
+              <li><a href="#food">必吃美食清单</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-widget scroll-animate">
+            <h3>📖 相关攻略</h3>
+            <div class="related-card"><div class="related-thumb" style="background:linear-gradient(135deg,#87CEEB,#6BC4A6);"></div><div class="related-info"><h4><a href="guide-detail.html" style="color:var(--dark);">巴黎穷游指南</a></h4><span>👁️ 5.1k · 2024-02-28</span></div></div>
+            <div class="related-card"><div class="related-thumb" style="background:linear-gradient(135deg,#FFF5BA,#FFA07A);"></div><div class="related-info"><h4><a href="guide-detail.html" style="color:var(--dark);">普吉岛水上运动全攻略</a></h4><span>👁️ 2.8k · 2024-01-20</span></div></div>
+            <div class="related-card"><div class="related-thumb" style="background:linear-gradient(135deg,#D8BFD8,#DDA0DD);"></div><div class="related-info"><h4><a href="guide-detail.html" style="color:var(--dark);">东京拉面横评</a></h4><span>👁️ 4.5k · 2024-03-05</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand"><h3>✈️ 萌趣旅行</h3><p>让旅行充满可爱与惊喜。</p><div class="footer-social"><a href="#">💬</a><a href="#">📱</a><a href="#">📷</a><a href="#">🐦</a></div></div>
+      <div class="footer-col"><h4>探索</h4><a href="destinations.html">热门目的地</a><a href="hotels.html">精选酒店</a><a href="flights.html">特价机票</a><a href="guides.html">旅游攻略</a></div>
+      <div class="footer-col"><h4>支持</h4><a href="about.html">关于我们</a><a href="#">帮助中心</a><a href="#">退改政策</a><a href="#">联系客服</a></div>
+      <div class="footer-col"><h4>我的账户</h4><a href="profile.html">个人中心</a><a href="favorites.html">我的收藏</a><a href="my-orders.html">我的订单</a><a href="settings.html">账户设置</a></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2024 萌趣旅行 Kawaii Travel. All rights reserved. 💖</p></div>
+  </footer>
+  <div class="back-to-top">↑</div>
+  <script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>注册 - 萌趣旅行</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .auth-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff0f3, #ffeef1, #e8f4f0, #f0f8ff); padding: 100px 20px 40px; }
+    .auth-card { background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); padding: 48px 40px; width: 100%; max-width: 480px; animation: fadeInUp 0.6s ease; }
+    .auth-card h1 { text-align: center; font-size: 1.8rem; margin-bottom: 8px; background: linear-gradient(135deg, var(--pink-dark), var(--coral)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .auth-card .subtitle { text-align: center; color: var(--text-light); margin-bottom: 32px; font-size: 0.95rem; }
+    .auth-card .form-group { margin-bottom: 18px; }
+    .auth-card label { font-weight: 600; font-size: 0.9rem; color: var(--dark); }
+    .auth-card .form-control { padding: 14px 18px; border-radius: var(--radius-md); border: 2px solid var(--light-gray); font-size: 1rem; transition: var(--transition); background: var(--off-white); }
+    .auth-card .form-control:focus { border-color: var(--pink); box-shadow: 0 0 0 4px rgba(255,182,193,0.2); background: var(--white); }
+    .auth-card .btn-primary { width: 100%; padding: 14px; font-size: 1.05rem; margin-top: 8px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .auth-links { text-align: center; margin-top: 24px; font-size: 0.9rem; color: var(--text-light); }
+    .auth-links a { color: var(--pink-dark); font-weight: 600; }
+    .password-strength { display: flex; gap: 4px; margin-top: 8px; }
+    .strength-bar { height: 4px; flex: 1; border-radius: 2px; background: var(--light-gray); transition: var(--transition); }
+    .strength-bar.active { background: var(--coral); }
+    .strength-bar.strong { background: var(--mint); }
+    .strength-text { font-size: 0.8rem; color: var(--text-light); margin-top: 4px; }
+    .cute-mascot { text-align: center; font-size: 3rem; margin-bottom: 16px; animation: bounce 2s ease-in-out infinite; }
+    .agree-row { display: flex; align-items: flex-start; gap: 8px; font-size: 0.85rem; color: var(--text-light); margin-bottom: 16px; }
+    .agree-row input { margin-top: 3px; accent-color: var(--pink); }
+    .agree-row a { color: var(--pink-dark); }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><span class="logo-icon">✈️</span> 萌趣旅行</a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="destinations.html">目的地</a>
+        <a href="hotels.html">酒店</a>
+        <a href="flights.html">机票</a>
+        <a href="guides.html">攻略</a>
+        <a href="about.html">关于我们</a>
+      </div>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-secondary btn-small">登录</a>
+        <a href="register.html" class="btn btn-primary btn-small">注册</a>
+      </div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <span class="mobile-close">&times;</span>
+    <a href="index.html">首页</a>
+    <a href="destinations.html">目的地</a>
+    <a href="hotels.html">酒店</a>
+    <a href="flights.html">机票</a>
+    <a href="guides.html">攻略</a>
+    <a href="about.html">关于我们</a>
+    <a href="login.html">登录</a>
+    <a href="register.html">注册</a>
+  </div>
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="cute-mascot">🎀</div>
+      <h1>创建账户</h1>
+      <p class="subtitle">加入萌趣旅行，开启可爱之旅</p>
+      <form id="registerForm" novalidate>
+        <div class="form-group">
+          <label for="username">昵称</label>
+          <input type="text" id="username" class="form-control" placeholder="给自己取个可爱的名字" data-validate="required|minLength:2">
+          <div class="form-error"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="reg-email">邮箱</label>
+            <input type="email" id="reg-email" class="form-control" placeholder="name@example.com" data-validate="required|email">
+            <div class="form-error"></div>
+          </div>
+          <div class="form-group">
+            <label for="phone">手机号</label>
+            <input type="tel" id="phone" class="form-control" placeholder="138xxxx8888" data-validate="required|phone">
+            <div class="form-error"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="reg-pwd">密码</label>
+          <input type="password" id="reg-pwd" class="form-control" placeholder="至少6位字符" data-validate="required|password">
+          <div class="password-strength">
+            <div class="strength-bar" id="str1"></div>
+            <div class="strength-bar" id="str2"></div>
+            <div class="strength-bar" id="str3"></div>
+            <div class="strength-bar" id="str4"></div>
+          </div>
+          <div class="strength-text" id="strengthText"></div>
+          <div class="form-error"></div>
+        </div>
+        <div class="form-group">
+          <label for="confirmPwd">确认密码</label>
+          <input type="password" id="confirmPwd" class="form-control" placeholder="再次输入密码" data-validate="required|minLength:6">
+          <div class="form-error"></div>
+        </div>
+        <div class="agree-row">
+          <input type="checkbox" id="agree" required>
+          <label for="agree">我已阅读并同意 <a href="#">用户协议</a> 和 <a href="#">隐私政策</a></label>
+        </div>
+        <button type="submit" class="btn btn-primary">注 册</button>
+      </form>
+      <div class="auth-links">
+        <p>已有账户？ <a href="login.html">立即登录</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-to-top">↑</div>
+  <script src="js/utils.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    document.getElementById('reg-pwd').addEventListener('input', function() {
+      var val = this.value;
+      var bars = [document.getElementById('str1'), document.getElementById('str2'), document.getElementById('str3'), document.getElementById('str4')];
+      var text = document.getElementById('strengthText');
+      var score = 0;
+      if (val.length >= 6) score++;
+      if (val.length >= 10) score++;
+      if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
+      if (/[0-9]/.test(val) && /[^A-Za-z0-9]/.test(val)) score++;
+      bars.forEach(function(b, i) { b.classList.toggle('active', i < score); b.classList.toggle('strong', score >= 4 && i < score); });
+      var labels = ['', '弱', '一般', '较强', '强'];
+      text.textContent = val ? '密码强度：' + labels[score] : '';
+    });
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var agree = document.getElementById('agree');
+      if (!agree.checked) { showToast('请先同意用户协议', 'warning'); return; }
+      if (validateForm(this)) {
+        showToast('注册成功！欢迎加入萌趣旅行', 'success');
+        setTimeout(function() { window.location.href = 'profile.html'; }, 1500);
+      }
+    });
+  </script>
+</body>
+</html>

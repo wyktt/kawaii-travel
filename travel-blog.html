@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>游记分享 - 萌趣旅行</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .blog-card { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .blog-card .blog-img { height: 220px; overflow: hidden; }
+    .blog-card .blog-img .img-placeholder { width: 100%; height: 100%; transition: transform 0.5s; }
+    .blog-card:hover .blog-img .img-placeholder { transform: scale(1.06); }
+    .blog-card .blog-body { padding: 24px; }
+    .blog-card .blog-body h3 { font-size: 1.15rem; margin-bottom: 10px; line-height: 1.4; }
+    .blog-card .blog-body h3 a { color: var(--dark); transition: var(--transition); }
+    .blog-card .blog-body h3 a:hover { color: var(--pink-dark); }
+    .blog-card .blog-body p { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 16px; }
+    .blog-card .blog-footer { display: flex; justify-content: space-between; align-items: center; }
+    .blog-author { display: flex; align-items: center; gap: 10px; }
+    .blog-author .avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .blog-author .name { font-size: 0.85rem; font-weight: 600; }
+    .blog-author .date { font-size: 0.75rem; color: var(--text-light); }
+    .blog-stats { display: flex; gap: 12px; font-size: 0.8rem; color: var(--text-light); }
+    .write-cta { text-align: center; padding: 48px; background: linear-gradient(135deg, rgba(255,182,193,0.1), rgba(152,216,200,0.1)); border-radius: var(--radius-lg); margin-bottom: 40px; }
+    .write-cta h2 { font-size: 1.6rem; margin-bottom: 8px; }
+    .write-cta p { color: var(--text-light); margin-bottom: 20px; }
+    @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><span class="logo-icon">✈️</span> 萌趣旅行</a>
+      <div class="nav-links"><a href="index.html">首页</a><a href="destinations.html">目的地</a><a href="hotels.html">酒店</a><a href="flights.html">机票</a><a href="guides.html" class="active">攻略</a><a href="about.html">关于我们</a></div>
+      <div class="nav-actions"><a href="login.html" class="btn btn-secondary btn-small">登录</a><a href="register.html" class="btn btn-primary btn-small">注册</a></div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu"><span class="mobile-close">&times;</span><a href="index.html">首页</a><a href="destinations.html">目的地</a><a href="hotels.html">酒店</a><a href="flights.html">机票</a><a href="guides.html">攻略</a><a href="about.html">关于我们</a><a href="login.html">登录</a><a href="register.html">注册</a></div>
+
+  <div class="page-header">
+    <h1>📝 游记分享</h1>
+    <div class="breadcrumb"><a href="index.html">首页</a> / <a href="guides.html">攻略</a> / 游记分享</div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="write-cta scroll-animate">
+        <h2>✨ 分享你的旅行故事</h2>
+        <p>记录每一次美好旅程，与萌趣旅行社区的小伙伴们分享你的独家记忆</p>
+        <button class="btn btn-primary" onclick="showToast('请先登录后再发布游记')">✏️ 写游记</button>
+      </div>
+
+      <div class="blog-grid">
+        <div class="blog-card scroll-animate delay-1">
+          <div class="blog-img"><div class="img-placeholder" style="background:linear-gradient(135deg,#FFB6C1,#FF8FA3);"></div></div>
+          <div class="blog-body">
+            <h3><a href="guide-detail.html">🌸 四月东京：一场与樱花的浪漫邂逅</a></h3>
+            <p>终于在最美的季节来到了东京！从目黑川的染井吉野到新宿御苑的八重樱，每一处都美得让人窒息。在樱花树下野餐，和当地人一起举杯，这就是春天最美好的样子。</p>
+            <div class="blog-footer">
+              <div class="blog-author"><div class="avatar" style="background:linear-gradient(135deg,#FFB6C1,#FF8FA3);">🌸</div><div><div class="name">樱花小妞</div><div class="date">2024-04-02</div></div></div>
+              <div class="blog-stats"><span>❤️ 892</span><span>💬 67</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="blog-card scroll-animate delay-2">
+          <div class="blog-img"><div class="img-placeholder" style="background:linear-gradient(135deg,#87CEEB,#6BC4A6);"></div></div>
+          <div class="blog-body">
+            <h3><a href="guide-detail.html">🗼 巴黎14天：走遍每一条浪漫的街道</a></h3>
+            <p>两周的巴黎生活，让我真正理解了什么是"慢生活"。每天在不同的咖啡馆醒来，漫步在塞纳河畔，偶遇街头艺人的小提琴曲。巴黎不是用来打卡的，是用来感受的。</p>
+            <div class="blog-footer">
+              <div class="blog-author"><div class="avatar" style="background:linear-gradient(135deg,#87CEEB,#6BC4A6);">🗼</div><div><div class="name">旅行家阿杰</div><div class="date">2024-03-20</div></div></div>
+              <div class="blog-stats"><span>❤️ 1.2k</span><span>💬 89</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="blog-card scroll-animate delay-1">
+          <div class="blog-img"><div class="img-placeholder" style="background:linear-gradient(135deg,#FFF5BA,#FFA07A);"></div></div>
+          <div class="blog-body">
+            <h3><a href="guide-detail.html">🏖️ 普吉岛蜜月：属于我们的海岛时光</a></h3>
+            <p>和另一半的蜜月旅行选择了普吉岛，从皮皮岛的碧绿海水到攀牙湾的壮丽日落，每一天都是浪漫的延续。分享我们的私藏景点和最佳日落观赏点。</p>
+            <div class="blog-footer">
+              <div class="blog-author"><div class="avatar" style="background:linear-gradient(135deg,#FFF5BA,#FFA07A);">🏖️</div><div><div class="name">鱼鱼和阿明</div><div class="date">2024-03-08</div></div></div>
+              <div class="blog-stats"><span>❤️ 567</span><span>💬 43</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="blog-card scroll-animate delay-2">
+          <div class="blog-img"><div class="img-placeholder" style="background:linear-gradient(135deg,#D8BFD8,#DDA0DD);"></div></div>
+          <div class="blog-body">
+            <h3><a href="guide-detail.html">🏯 京都四季：穿越千年的时光之旅</a></h3>
+            <p>京都的四季都有着不同的美。春天的哲学之道、夏天的祇园祭、秋天的东福寺红叶、冬天的金阁寺雪景。这篇游记记录了我四次到访京都的不同体验。</p>
+            <div class="blog-footer">
+              <div class="blog-author"><div class="avatar" style="background:linear-gradient(135deg,#D8BFD8,#DDA0DD);">🏯</div><div><div class="name">和风物语</div><div class="date">2024-02-14</div></div></div>
+              <div class="blog-stats"><span>❤️ 734</span><span>💬 56</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-3 scroll-animate">
+        <button class="btn btn-secondary" onclick="showToast('加载更多游记...')">加载更多游记 ↓</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand"><h3>✈️ 萌趣旅行</h3><p>让旅行充满可爱与惊喜。</p><div class="footer-social"><a href="#">💬</a><a href="#">📱</a><a href="#">📷</a><a href="#">🐦</a></div></div>
+      <div class="footer-col"><h4>探索</h4><a href="destinations.html">热门目的地</a><a href="hotels.html">精选酒店</a><a href="flights.html">特价机票</a><a href="guides.html">旅游攻略</a></div>
+      <div class="footer-col"><h4>支持</h4><a href="about.html">关于我们</a><a href="#">帮助中心</a><a href="#">退改政策</a><a href="#">联系客服</a></div>
+      <div class="footer-col"><h4>我的账户</h4><a href="profile.html">个人中心</a><a href="favorites.html">我的收藏</a><a href="my-orders.html">我的订单</a><a href="settings.html">账户设置</a></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2024 萌趣旅行 Kawaii Travel. All rights reserved. 💖</p></div>
+  </footer>
+  <div class="back-to-top">↑</div>
+  <script src="js/utils.js"></script><script src="js/main.js"></script><script src="js/cart.js"></script>
+</body>
+</html>

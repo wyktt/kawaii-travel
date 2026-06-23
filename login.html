@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录 - 萌趣旅行</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .auth-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff0f3, #ffeef1, #e8f4f0, #f0f8ff); padding: 100px 20px 40px; }
+    .auth-card { background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); padding: 48px 40px; width: 100%; max-width: 440px; animation: fadeInUp 0.6s ease; }
+    .auth-card h1 { text-align: center; font-size: 1.8rem; margin-bottom: 8px; background: linear-gradient(135deg, var(--pink-dark), var(--coral)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .auth-card .subtitle { text-align: center; color: var(--text-light); margin-bottom: 32px; font-size: 0.95rem; }
+    .auth-card .form-group { margin-bottom: 20px; }
+    .auth-card .form-control { padding: 14px 18px; border-radius: var(--radius-md); border: 2px solid var(--light-gray); font-size: 1rem; transition: var(--transition); background: var(--off-white); }
+    .auth-card .form-control:focus { border-color: var(--pink); box-shadow: 0 0 0 4px rgba(255,182,193,0.2); background: var(--white); }
+    .auth-card .btn-primary { width: 100%; padding: 14px; font-size: 1.05rem; margin-top: 8px; }
+    .auth-links { text-align: center; margin-top: 24px; font-size: 0.9rem; color: var(--text-light); }
+    .auth-links a { color: var(--pink-dark); font-weight: 600; }
+    .auth-divider { display: flex; align-items: center; gap: 16px; margin: 24px 0; color: var(--gray); font-size: 0.85rem; }
+    .auth-divider::before, .auth-divider::after { content: ''; flex: 1; height: 1px; background: var(--light-gray); }
+    .social-login { display: flex; gap: 12px; justify-content: center; }
+    .social-btn { width: 50px; height: 50px; border-radius: var(--radius-round); border: 2px solid var(--light-gray); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; transition: var(--transition); cursor: pointer; background: var(--white); }
+    .social-btn:hover { border-color: var(--pink); transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+    .remember-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; }
+    .remember-row label { display: flex; align-items: center; gap: 6px; cursor: pointer; color: var(--text-light); }
+    .remember-row a { color: var(--pink-dark); }
+    .cute-mascot { text-align: center; font-size: 3rem; margin-bottom: 16px; animation: bounce 2s ease-in-out infinite; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><span class="logo-icon">✈️</span> 萌趣旅行</a>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="destinations.html">目的地</a>
+        <a href="hotels.html">酒店</a>
+        <a href="flights.html">机票</a>
+        <a href="guides.html">攻略</a>
+        <a href="about.html">关于我们</a>
+      </div>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-secondary btn-small">登录</a>
+        <a href="register.html" class="btn btn-primary btn-small">注册</a>
+      </div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <span class="mobile-close">&times;</span>
+    <a href="index.html">首页</a>
+    <a href="destinations.html">目的地</a>
+    <a href="hotels.html">酒店</a>
+    <a href="flights.html">机票</a>
+    <a href="guides.html">攻略</a>
+    <a href="about.html">关于我们</a>
+    <a href="login.html">登录</a>
+    <a href="register.html">注册</a>
+  </div>
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="cute-mascot">🧸</div>
+      <h1>欢迎回来！</h1>
+      <p class="subtitle">登录你的萌趣旅行账户</p>
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label for="email">邮箱地址</label>
+          <input type="email" id="email" class="form-control" placeholder="请输入邮箱" data-validate="required|email">
+          <div class="form-error"></div>
+        </div>
+        <div class="form-group">
+          <label for="password">密码</label>
+          <input type="password" id="password" class="form-control" placeholder="请输入密码" data-validate="required|password">
+          <div class="form-error"></div>
+        </div>
+        <div class="remember-row">
+          <label><input type="checkbox" checked> 记住我</label>
+          <a href="#">忘记密码？</a>
+        </div>
+        <button type="submit" class="btn btn-primary">登 录</button>
+      </form>
+      <div class="auth-divider">或使用以下方式登录</div>
+      <div class="social-login">
+        <div class="social-btn" title="微信登录">💬</div>
+        <div class="social-btn" title="QQ登录">🐧</div>
+        <div class="social-btn" title="微博登录">📱</div>
+      </div>
+      <div class="auth-links">
+        <p>还没有账户？ <a href="register.html">立即注册</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-to-top">↑</div>
+  <script src="js/utils.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (validateForm(this)) {
+        showToast('登录成功！正在跳转...', 'success');
+        setTimeout(function() { window.location.href = 'profile.html'; }, 1200);
+      }
+    });
+  </script>
+</body>
+</html>

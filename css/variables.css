@@ -1,0 +1,52 @@
+:root {
+  /* 主色 */
+  --pink: #FFB6C1;
+  --pink-dark: #FF8FA3;
+  --mint: #98D8C8;
+  --mint-dark: #6BC4A6;
+  --sky: #87CEEB;
+  --cream: #FFF5BA;
+  --coral: #FFA07A;
+  --coral-dark: #FF7F50;
+
+  /* 中性色 */
+  --white: #FFFFFF;
+  --off-white: #FFF9F5;
+  --light-gray: #F5F0EB;
+  --gray: #B0A8A0;
+  --dark: #4A4038;
+  --text: #5C524A;
+  --text-light: #8A8279;
+
+  /* 字体 */
+  --font-main: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-display: 'Comic Sans MS', 'Segoe UI', cursive, sans-serif;
+
+  /* 圆角 */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-round: 50%;
+
+  /* 阴影 */
+  --shadow-sm: 0 2px 8px rgba(255, 182, 193, 0.2);
+  --shadow-md: 0 4px 16px rgba(255, 182, 193, 0.3);
+  --shadow-lg: 0 8px 32px rgba(255, 182, 193, 0.35);
+  --shadow-hover: 0 8px 24px rgba(255, 182, 193, 0.45);
+
+  /* 间距 */
+  --gap-xs: 4px;
+  --gap-sm: 8px;
+  --gap-md: 16px;
+  --gap-lg: 24px;
+  --gap-xl: 40px;
+  --gap-xxl: 64px;
+
+  /* 最大宽度 */
+  --max-width: 1200px;
+
+  /* 过渡 */
+  --transition: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
